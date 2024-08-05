@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Sneaky Events Team",
+      "url": "https://www.sneakyeventsteam.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.sneakyeventsteam.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Sneaky Events Team</title>
+    <meta name="description" content="Discover how Sneaky Events Team can make your events memorable with our comprehensive event management services.">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="anim.css">
+    <link rel="stylesheet" href="css/media-query.css">
+    <link rel="icon" type="image/x-icon" href="/img/favicon/favicon.ico">
+    <link rel="android-chrome" sizes="192x192" href="/img/favicon/android-chrome-192x192.png">
+    <link rel="android-chrome" sizes="512x512" href="/img/favicon/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-32x32.png">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+
+<style>
+  .swiper-container {
+    width: 120%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+    background-color: #14161b;
+    height: 450px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .swiper-container img {
+    cursor: pointer;
+
+  }
+  .swiper-slide {
+    background: transparent;
+    border-radius: 3px;
+    transition: all 0.3s;
+    opacity: 0.3;
+    height: 50%;
+    margin-top: 100px;
+  }
+  .swiper-slide.swiper-slide-active {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  .swiper-slide:not(.swiper-slide-active) {
+    transform: scale(0.9);
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .swiper-container {
+    width: 120%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+    background-color: #141b15;
+    height: 300px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .swiper-container img {
+    cursor: pointer;
+  }
+  .swiper-slide {
+    background: transparent;
+    border-radius: 3px;
+    transition: all 0.3s;
+    opacity: 0.3;
+    height: 50%;
+    margin-top: 80px;
+    box-shadow: 0px 2px 2px rgb(83, 77, 77);
+  }
+  .swiper-slide.swiper-slide-active {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  .swiper-slide:not(.swiper-slide-active) {
+    transform: scale(0.9);
+  }
+    }
+</style>
+<body oncontextmenu="return false">
+
+  <!-- chatbot start -->
+  <button id="openChatBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-right-dots" viewBox="0 0 16 16">
+      <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+      <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+    </svg>
+  </button>
+  <div class="chat-popup" id="chatPopup">
+    <div class="chat-container" id="chatContainer">
+      <header class="chat-header">
+        <h2>Sneaky Chatbot</h2>
+        <span class="close" id="closeChatBtn">&times;</span>
+      </header>
+      <div class="chat-content">
+        <p>Welcome to the chatbot!</p>
+        <!-- Chat messages will be displayed here -->
+      </div>
+      <div id="openLiveChat">
+        <iframe width="130" height="25" id="messengerbtn" style="border: 0" src="https://cdn.smooch.io/message-us/index.html?channel=messenger&color=white&size=compact&radius=15px&label=Messenger&pageId=103263345417910"></iframe>
+      </div>
+      <div class="msgbox">
+        <input type="text" placeholder="Send a message" id="userInput" autocomplete="off">
+      <button id="sendBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+          <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/>
+        </svg>
+      </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- chatbot start -->
+
+    <!-- Header Design start -->
+    <header class="header">
+      <a href="#home" class="logo">Sneaky Events Team</a>
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#products">Products</a>
+        <a href="#testomonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contactUs">Contact Us</a>
+      </nav>
+    </header>
+    <div id="loader-3">
+      
+      <p>Your data is processing.<img src="/img/SETLOGOSILVER.png" /><span class="loader-spin-3"></span></p>
+    </div>
+      <!-- Header Design end -->
+  
+
+      <!-- Home Section start -->
+      <section class="home" id="home">
+        <div class="home-content">
+          <h1>SNEAKY EVENTS TEAM</h1>
+          <h3>GAME STREAMING AND ADVERTISING SERVICES</h3>
+          <p>We offer a comprehensive range of advertising services,
+            underpinned by a proven track record. Our
+            achievements are propelled by a highly skilled and
+            experienced team of marketers, bolstered by robust
+            partner alliances.
+          </p>
+          <p>
+            Our Portfolio boasts over seven successful local and national
+            tournaments within various communities, amassing more than 28,000
+            followers and 27,000 likes on our official Facebook page.
+          </p>
+          <div class="social-media">
+            <a href="https://web.facebook.com/SneakyEventsTeam" target="_blank"><i class="bx bxl-facebook"></i></a>
+            <a href="https://www.youtube.com/@sneakyeventsteam-setonline7681" target="_blank"><i class="bx bxl-youtube"></i></a>
+            <a href="https://discord.gg/dmUYZMrkqY" target="_blank"><i class='bx bxl-discord-alt'></i></a>
+          </div>
+        </div>
+  
+        <!-- IMAGE LOGO -->
+        <div class="home-img">
+          <img src="img/SETLOGOSILVER.png" alt="" />
+        </div>
+      </section>
+      <!-- Home Section end -->
+
+      <!-- Live Stream Section start -->
+      <section class="live-container" id="heading">
+        <h2 class="heading">Live Stream</h2>
+      
+        <div class="video-gallery">
+          <div class="main-video">
+            <div class="responsive-iframe">
+              <iframe id="main-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3 class="video-title"></h3>
+          </div>
+      
+          <div class="video-playlist">
+            <!-- Automatic Update -->
+          </div>
+        </div>
+      </section>
+      
+    <!-- Live Stream Section end -->
+
+
+      <!-- About Section start -->
+    <section class="about" id="about">
+      <div class="about-img">
+        <img src="img/SETWHITE.png" alt="" />
+      </div>
+      <div class="about-content">
+        <h2 class="heading">ABOUT US</h2>
+        <p>
+          Your partner in crafting extraordinary experience. Specializing in
+          game streaming and advertising services, Sneaky Events has been a
+          pioneering force in brand advertising since February 2021.
+          We offer a comprehensive range of advertising services, underpinned by a proven track record. Our achievements are propelled by a highly skilled and expierenced team of marketers, bolstered by robust partner alliances.
+        </p>
+        <a href="#contactUs" class="btn">Contact</a>
+      </div>
+    </section>
+
+    
+
+    <div class="about-mv-container">
+      <div class="about-box" id="missionBox">
+        <h2 class="">MISSION</h2>
+        <button class="openModalBtn">Read More</button>
+      </div>
+      <div class="about-box" id="visionBox">
+        <h2>VISION</h2>
+        <button class="openModalBtn">Read More</button>
+      </div>
+      <div class="about-box" id="valuesBox">
+        <h2>CORE VALUES</h2>
+        <button class="openModalBtn">Read More</button>
+      </div>
+    </div>
+    
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span id="close">&times;</span>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+    <!-- About Section end -->
+
+    <!-- Service Section start -->
+    <section class="services" id="services">
+      <h2 class="heading">OUR SERVICES</h2>
+      <div class="services-container">
+        <div class="service-box">
+          <i class="bx bx-calendar-event"></i>
+          <h3>EVENT MODERATOR</h3>
+          <button onclick="showPopup(1)">Read more</button>
+        </div>
+        <div class="service-box">
+          <i class="bx bxl-creative-commons"></i>
+          <h3>CREATIVE CAMPAIGN</h3>
+          <button onclick="showPopup(2)">Read more</button>
+        </div>
+        <div class="service-box">
+          <i class="bx bx-line-chart"></i>
+          <h3>MARKET SERVICE</h3>
+          <button onclick="showPopup(3)">Read more</button>
+        </div>
+        
+        <!-- Popup Section -->
+        <!--Pop up Info -->
+        <div class="popup-container" id="popupContainer1">
+          <div class="popup-content-1">
+              <span class="close-button" onclick="hidePopup(1)">&times;</span>
+              <h3>EVENT MODERATOR</h3>
+              <button onclick="eClick()" id="eslidebtn"><code>></code></button>
+            <section id="e-slide-1">
+              <p><b>Gaming Tournament Organizer: </b></p>
+              <p>Level up your gaming events with our expertise and make them truly epic.</p>
+              <br /><br />
+              <p><b>On-site Event management: </b></p>
+              <p>(Booth Design/Stage Design, Event Styling, Sound System, Internet connection, Projector/tv screen/LCD. Wire/Charging connection, extension, Event Place, Table and Chairs, Sound system, Concert convention, Guerilla marketing).</p>
+              <br /><br />
+              <p><b>Production and Events Organizing: </b></p>
+              <p>From concept to execute, we create memorable and flawless productions and events.</p>
+            </section>
+            <section id="e-slide-2">
+              <p><b>1. Event Hosting and Coordination </b></p>
+              <p>(Host, Content Procedures, Show and Floor Director).</p>
+              <br />
+              <br />
+              <p><b>2. Technical and Production </b></p>
+              <p>(Shout caster, Technical Support, Technical Design, Technical Fabrication, broad casting director Photo and Video production).</p>
+              <br />
+              <br />
+              <p><b>3. Event Operations </b></p>
+              <p>(Admin, Security, Floor Crew, Tournament Marshals and Medics).</p>
+              <br />
+              <br />
+              <p><b>Operation Team:</b>Let us be the backbone of your operations and ensure smooth execution every step of the way.</p>
+            </section>
+          </div>
+      </div>
+      <!--Pop up Info ^^-->
+      <!--Pop up Info -->
+        <div class="popup-container" id="popupContainer2">
+          <div class="popup-content-2">
+              <span class="close-button" onclick="hidePopup(2)">&times;</span>
+              <h3>CREATIVE CAMPAIGN</h3>
+            <section class="section2">
+              <p><b>GRAPHICS DESIGN:</b></p>
+              <p>A lasting impression with visually stunning designs that represent your brand's uniqueness.</p>
+              <p>(Posters and banners, OHH, Logos, Tournaments, Merch and Fliers).</p>
+              <br />
+              <p><b>WEB DESIGNING:</b></p>
+              <p>Stand out in the online world with beautifully designed websites that drive results. (UI/UX Design, High Resolution and 3D Layout).</p>
+            </section>
+          </div>
+      </div>
+      <!--Pop up Info ^^-->
+      <!--Pop up Info -->
+        <div class="popup-container" id="popupContainer3">
+          <div class="popup-content-3">
+              <span class="close-button" onclick="hidePopup(3)">&times;</span>
+              <h3>MARKET SERVICE</h3>
+              <br /><br />
+            <section class="section3">
+              <p><b>Digital Marketing:</b></p>
+              <p>Dominate the digital landscape and reach your target audience with our proven strategies. (Facebook Adversiting, Content Creation, Scriptwriting and Copywriting).</p>
+              <br /><br />
+              <p><b>Marketing and promotions:</b></p>
+              <p>Boost your brand's visibility and drive growth with our strategic marketing and promotions expertise. Forge lucrative partnerships and maximize sponsorships with our professional management services.</p>
+            </section>
+          </div>
+      </div>
+      <!--Pop up Info ^^-->
+    </section>
+    <!-- Service Section end -->
+
+    <!-- Product Section start -->
+    <section class="products" id="products">
+      <div class="pro_container">
+        <h2 class="heading">PRODUCTS</h2>
+        <!--Menu filter-->
+        <div class="items-links">
+          <span class="item-link-0" data-target="event">Event</span>
+          <span class="item-link-1" data-target="merchandise">Merchandise</span>
+          <span class="item-link-2" data-target="ticket">Ticket</span>
+          <span class="item-link-3" id="item-link" data-target="registration">Registration
+            <select class="item-link-4" id="item-link-select" data-target="registration1">
+              <option value=" ">Select</option>
+              <option value="valorant" disabled>VALORANT</option>
+              <option value="mlbb">MLBB</option>
+            </select>
+          </span>
+        </div>
+
+        <!--Data Targets-->
+        <div class="product" id="event" data-name="event">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <img class="swiper-slide" src="/img/TEASER_DP.png" />
+              <!-- <img class="swiper-slide" src="/img/slide2.jpg" />
+              <img class="swiper-slide" src="/img/slide3.jpg" />
+              <img class="swiper-slide" src="/img/slide4.jpg" />
+              <img class="swiper-slide" src="/img/slide5.jpg" /> -->
+            </div>
+          </div>
+          <div class="shadow3d"></div>
+        </div>
+
+        <div class="product hidden" id="merchandise" data-name="merchandise">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <img class="swiper-slide" src="/img/MERCHANDISE/BALLER.png" />
+              <img class="swiper-slide" src="/img/MERCHANDISE/TOTE.png" />
+              <img class="swiper-slide" src="/img/MERCHANDISE/mug1.png" />
+              <img class="swiper-slide" src="/img/MERCHANDISE/mug2.png" />
+              <img class="swiper-slide" src="/img/MERCHANDISE/shirt1.png" />
+              <img class="swiper-slide" src="/img/MERCHANDISE/shirt2.png" />
+            </div>
+          </div>
+          <div class="shadow3d"></div>
+        </div>
+        <div class="product hidden" id="ticket" data-name="ticket" style="overflow: hidden;">
+          <h1 class="top-note">--- Minors Not Allowed ---</h1>
+          <div id="ticketing">
+            <div id="viewrules">
+              <button id="viewbtn">View Rules</button>
+            </div>
+            <form method="post" name="ticket-form" action="https://script.google.com/macros/s/AKfycbxAQPF8rrAikYrEmTchYxk32BB1vGSbNvwwtTNkKG0J4gqyxAlLRL-Vyl4-jqcaZ8K3/exec">
+              <label for="Email">Email: </label><br />
+              <input type="email" name="Email" placeholder="Email" required>
+              <br />
+              <label for="FirstName">First Name: </label><br />
+              <input type="text" name="FirstName" placeholder="First Name" required>
+              <br />
+              <label for="LastName">Last Name: </label><br />
+              <input type="text" name="LastName" placeholder="Last Name" required>
+              <br />
+              <br />
+              <h2>Select A Ticket</h2>
+              <br />
+              <h5 style="color: #ccb1b1;">Note: Valid until December</h5>
+              <input type="radio" id="TicketAvailed1" name="TicketAvailed" value="ticket1" required>
+              <label for="TicketAvailed1" style="cursor: pointer;">SVIP - 765 each <span><img src="/img/SVIP 25.jpg" id="ticketimg"></span> </label><br />
+              <input type="radio" id="TicketAvailed2" name="TicketAvailed" value="ticket2" required>
+              <label for="TicketAvailed2" style="cursor: pointer;">VIP - 585 each <span><img src="/img/VIP 25.jpg" id="ticketimg"></span> </label><br />
+              <input type="radio" id="TicketAvailed3" name="TicketAvailed" value="ticket3" required>
+              <label for="TicketAvailed3" style="cursor: pointer;">General Admission - 495 each <span><img src="/img/GEN AD 25.jpg" id="ticketimg"></span> </label><br />
+              <br />
+              <p>How many tickets will you avail?</p>
+              <select name="availedtickets" id="availedtickets" required>
+                <option value="">Choose</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <br />
+              <h4>Choose Your Preferred Date</h4>
+              <br />
+              <fieldset required>
+                <label for="dateselect-1" id="labeldate-1">Dec 12<input type="checkbox" name="dateselect-1" id="dateselect-1"></label>
+                <label for="dateselect-2" id="labeldate-2">Dec 14<input type="checkbox" name="dateselect-2" id="dateselect-2"></label>
+                <label for="dateselect-3" id="labeldate-3">Dec 15<input type="checkbox" name="dateselect-3" id="dateselect-3"></label>
+              </fieldset>
+              <br />
+              <br />
+              <h4>Proof Of Payment<br /> (Gcash only: <b>09951902785</b> J*****N B.)</h4>
+              <p>Please pay exact amount</p>
+              <input type="file" id="ticketproof" accept="image/*">
+              <br />
+              <br />
+              <p>REFERRAL CODE: (If Any)</p>
+              <input type="text" name="refcode" placeholder="REFERRAL CODE" style="max-width: 100%;">
+              <br />
+
+              <p id="submitbtnmessage" >To make the submit button appear, please ensure all fields are filled out.</p>
+              <input type="submit" id="submitbtnticket" placeholder="Submit" style="display: none;" disabled>
+              
+            </form>
+            <div id="ticket-container">
+              <button id="closeviewbtn">&#10005;</button>
+              <div id="ticket-details">
+                <h2>TICKET SELLING</h2>
+                <br />
+              <p><b>Check the official tournament website or social media pages.</b></p>
+              <a href="https://www.facebook.com/SneakyEventsTeam">https://www.facebook.com/SneakyEventsTeam</a>
+              <br />
+              <a href="https://discord.gg/7gmuHNVC">https://discord.gg/7gmuHNVC</a>
+              <br />
+              <p><b>Registration Process:</b></p><br />
+              <p>- Visit our official tournament website at - <a href="https://www.facebook.com/SneakyEventsTeam">https://www.facebook.com/SneakyEventsTeam</a></p><br />
+              <p>Look for the "Tickets" or "Buy Tickets" post form.</p><br />
+              <h1>Note: You can also directly fill out the form here.</h1>
+
+              <br />
+              <br />
+              <p><b>Selecting Tickets:</b></p>
+              <p>- Once on the ticketing form, browse through the available ticket options.
+                - Select the type and quantity of tickets you wish to purchase (e.g., General Admission, VIP, etc.). <br />
+                - Once you finish answering the forms, you will need to message the page to verify your details and also your selected ticket and number of tickets that you will avail.</p>
+              <br />
+              <p><b>Checkout Process:</b></p>
+              <p>- Once you are verified, an admin will ask you to pay the total amount of the tickets that you wish to purchase.<br />
+                - Fill in the required information accurately, including your name, and email.<br />
+                - For people who will buy multiple number of tickets, we will be asking for the names of your friends in order to assign them a specified ticket number.</p>
+              <br />
+              <p><b>Payment:</b></p>
+              <p>- The payment method will be GCASH only (09951902785 J*****N B.)<br />
+                - Enter your payment details securely.</p>
+              <br />
+              <p><b>Confirmation:</b></p>
+              <p>- After completing the payment process, you will receive a confirmation email with your ticket details.<br />
+                - Save this email for your records. Your ticket(s) will be used for entry to the tournament.</p>
+              <br />
+              <p><b>Entry to the Tournament:</b></p>
+              <p>- On the day of the tournament, present either a printed copy of your ticket or display the electronic version on your mobile device at the entry gate.</p>
+              <br />
+              <p><b>Additional Information:</b></p>
+              <p>- For any inquiries or assistance regarding ticket purchases, feel free to contact our customer support team at sneakyeventsteam@gmail.com</p>
+              <br />
+              <p><b>Important Note:</b></p>
+              <p>- Tickets are non-transferable and should not be resold. Any attempt to resell tickets may result in cancellation of entry without refund.<br />
+                - Tickets are sold on a first-come, first-served basis, so we encourage you to secure yours early.<br />
+                - Make sure to read and understand any terms and conditions associated with the ticket purchase, including refund policies.</p>
+              <br />
+              <p><b>Enjoy the Tournament!</b></p>
+              <p>We look forward to welcoming you to the tournament and hope you have a fantastic experience!</p>
+              </div>
+            </div>
+            <img src="img/SETWHITE.png" id="LogoTicket" alt="">
+          </div>
+        </div>
+        
+        <!--Filter images-->
+        <div class="registration product hidden" id="registrationform" data-name="registration">
+          <div class="registration" id="registration-valo" data-name="registration1">
+            <div id="loader-1">
+              <div class="loader-spin"></div>
+              <p>Your data is processing.<img src="/img/SETLOGOSILVER.png" /></p>
+            </div>
+            <p id="registration-title-v">
+              VALORANT REGISTRATION
+            </p>
+            <form method="POST" name="reg-form" action="https://script.google.com/macros/s/AKfycby_yLGqeuo3EmPMADNMOEpiswsoW2KhfdDIxs8qKTGN2fCXMkBmCGsBJ1X3BGCO9dE/exec">
+              <div class="reg-data" id="reg-data">
+                <div id="inputform-1">
+                  <label for="Email">Email</label>
+                  <input type="email" name="Email" required>
+                  <br />
+                  <label for="Team Name">Team Name</label>
+                  <input type="text" name="Team Name" required>
+                  <br />
+                  <label for="Short Team Name">Short Team Name</label>
+                  <input type="text" name="Short Team Name" required>
+                  <br />
+                  <label for="Team Captain Name">Team Captain/Coach Name</label>
+                  <input type="text" name="Team Captain Name" required>
+                  <br />
+                  <label for="Captain Email">Captain Email</label>
+                  <input type="email" name="Captain Email" required>
+                </div>
+                <div id="inputform-2">
+                  <br />
+                  <label for="Captain/Coach Number">Captain/Coach Contact Number</label>
+                  <input type="tel" name="Captain/Coach Number" required>
+                  <br />
+                  <label for="Captain Discord ID">Captain/Coach Discord ID</label>
+                  <input type="text" name="Captain Discord ID" required>
+                  <br />
+                  <label for="Captain/Coach FB Link">Team Captain/Coach Fb Link</label>
+                  <input type="text" name="Captain/Coach FB Link" required>
+                  <br />
+                  <label for="payment">Proof of payment</label>
+                  <input type="file" id="payment" name="payment" accept="image/*" placeholder="Proof Of Payment" required>
+                  <br />
+                  <label for="logo">Your Team Logo</label>
+                  <input type="file" id="logo" name="logo" accept="image/*" placeholder="Insert your team logo" required>
+                </div>
+              <button id="nextBtn1valo" onclick="valoslidebtn()" type="button">&rsaquo;</button>
+              <button id="nextBtn2valo" onclick="valoslidebtn2()" type="button">&lsaquo;</button>
+                <div id="inputform-3">
+                  <label for="Player1Name">Player 1 Name</label>
+                  <input type="text" name="Player1Name" required>
+                  <br />
+                  <label for="Player1RiotId">Player 1 Riot Id + Tagline</label>
+                  <input type="text" name="Player1RiotId" required>
+                  <br />
+                  <label for="Player1Rank">Player 1 Rank</label>
+                  <select name="Player1Rank" id="rank-valo">
+                      <option value="Iron">IRON</option>
+                      <option value="Bronze">BRONZE</option>
+                      <option value="Silver">SILVER</option>
+                      <option value="Gold">GOLD</option>
+                      <option value="Platinum">PLATINUM</option>
+                      <option value="Diamond">DIAMOND</option>
+                      <option value="Ascendat">ASCENDAT</option>
+                      <option value="Immortal">IMMORTAL</option>
+                      <option value="Radiant">RADIANT</option>
+                  </select>
+                  <br />
+                  <label for="Player1DiscordID">Player 1 Discord ID</label>
+                  <input type="text" name="Player1DiscordID" required>
+                  <br />
+                  <label for="Player1FBLink">Player 1 Fb Link</label>
+                  <input type="text" name="Player1FBLink" required>
+              </div>
+              <div id="inputform-4">
+                <label for="Player2Name">Player 2 Name</label>
+                <input type="text" name="Player2Name" required>
+                <br />
+                <label for="Player2RiotId">Player 1 Riot Id + Tagline</label>
+                <input type="text" name="Player2RiotId" required>
+                <br />
+                <label for="Player2Rank">Player 1 Rank</label>
+                <select name="Player2Rank" id="rank-valo">
+                    <option value="Iron">IRON</option>
+                    <option value="Bronze">BRONZE</option>
+                    <option value="Silver">SILVER</option>
+                    <option value="Gold">GOLD</option>
+                    <option value="Platinum">PLATINUM</option>
+                    <option value="Diamond">DIAMOND</option>
+                    <option value="Ascendat">ASCENDAT</option>
+                    <option value="Immortal">IMMORTAL</option>
+                    <option value="Radiant">RADIANT</option>
+                </select>
+                <br />
+                <label for="Player2DiscordID">Player 1 Discord ID</label>
+                <input type="text" name="Player2DiscordID" required>
+                <br />
+                <label for="Player2FBLink">Player 1 Fb Link</label>
+                <input type="text" name="Player2FBLink" required>
+              </div>
+              <div id="inputform-5">
+                <label for="Player3Name">Player 3 Name</label>
+                <input type="text" name="Player3Name" required>
+                <br />
+                <label for="Player3RiotId">Player 3 Riot Id + Tagline</label>
+                <input type="text" name="Player3RiotId" required>
+                <br />
+                <label for="Player3Rank">Player 3 Rank</label>
+                <select name="Player3Rank" id="rank-valo">
+                    <option value="Iron">IRON</option>
+                    <option value="Bronze">BRONZE</option>
+                    <option value="Silver">SILVER</option>
+                    <option value="Gold">GOLD</option>
+                    <option value="Platinum">PLATINUM</option>
+                    <option value="Diamond">DIAMOND</option>
+                    <option value="Ascendat">ASCENDAT</option>
+                    <option value="Immortal">IMMORTAL</option>
+                    <option value="Radiant">RADIANT</option>
+                </select>
+                <br />
+                <label for="Player3DiscordID">Player 3 Discord ID</label>
+                <input type="text" name="Player3DiscordID" required>
+                <br />
+                <label for="Player3FBLink">Player 3 Fb Link</label>
+                <input type="text" name="Player3FBLink" required>
+              </div>
+              <div id="inputform-6">
+                <label for="Player4Name">Player 4 Name</label>
+                <input type="text" name="Player4Name" required>
+                <br />
+                <label for="Player4RiotId">Player 4 Riot Id + Tagline</label>
+                <input type="text" name="Player4RiotId" required>
+                <br />
+                <label for="Player4Rank">Player 4 Rank</label>
+                <select name="Player4Rank" id="rank-valo">
+                    <option value="Iron">IRON</option>
+                    <option value="Bronze">BRONZE</option>
+                    <option value="Silver">SILVER</option>
+                    <option value="Gold">GOLD</option>
+                    <option value="Platinum">PLATINUM</option>
+                    <option value="Diamond">DIAMOND</option>
+                    <option value="Ascendat">ASCENDAT</option>
+                    <option value="Immortal">IMMORTAL</option>
+                    <option value="Radiant">RADIANT</option>
+                </select>
+                <br />
+                <label for="Player4DiscordID">Player 4 Discord ID</label>
+                <input type="text" name="Player4DiscordID" required>
+                <br />
+                <label for="Player4FBLink">Player 4 Fb Link</label>
+                <input type="text" name="Player4FBLink" required>
+              </div>
+              <div id="inputform-7">
+                <label for="Player5Name">Player 5 Name</label>
+                <input type="text" name="Player5Name" required>
+                <br />
+                <label for="Player5RiotId">Player 5 Riot Id + Tagline</label>
+                <input type="text" name="Player5RiotId" required>
+                <br />
+                <label for="Player5Rank">Player 5 Rank</label>
+                <select name="Player5Rank" id="rank-valo">
+                    <option value="Iron">IRON</option>
+                    <option value="Bronze">BRONZE</option>
+                    <option value="Silver">SILVER</option>
+                    <option value="Gold">GOLD</option>
+                    <option value="Platinum">PLATINUM</option>
+                    <option value="Diamond">DIAMOND</option>
+                    <option value="Ascendat">ASCENDAT</option>
+                    <option value="Immortal">IMMORTAL</option>
+                    <option value="Radiant">RADIANT</option>
+                </select>
+                <br />
+                <label for="Player5DiscordID">Player 5 Discord ID</label>
+                <input type="text" name="Player5DiscordID" required>
+                <br />
+                <label for="Player5FBLink">Player 5 Fb Link</label>
+                <input type="text" name="Player5FBLink" required>
+              </div>
+                <button id="submitbtnvalo" type="submit" style="cursor: pointer;">Submit</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="registration2" id="registration-mlbb" data-name="Registration">
+            <div id="loader-2">
+              <div class="loader-spin-2"></div>
+              <p>Your data is processing.<img src="/img/SETLOGOSILVER.png" /></p>
+            </div>
+            <p id="registration-title-m">
+              MLBB REGISTRATION
+            </p>
+            <form method="POST" name="reg-form-2" action="https://script.google.com/macros/s/AKfycby_yLGqeuo3EmPMADNMOEpiswsoW2KhfdDIxs8qKTGN2fCXMkBmCGsBJ1X3BGCO9dE/exec">
+              <div class="reg-data" id="reg-data">
+                <div id="mlbbinputform-1">
+                  <label for="ml-Email">Email</label>
+                  <input type="email" name="ml-Email" required>
+                  <br />
+                  <label for="ml-Team Name">Team Name</label>
+                  <input type="text" name="ml-Team Name" required>
+                  <br />
+                  <label for="ml-Short Team Name">Short Team Name</label>
+                  <input type="text" name="ml-Short Team Name" required>
+                  <br />
+                  <label for="ml-Team Captain Name">Team Captain/Coach Name</label>
+                  <input type="text" name="ml-Team Captain Name" required>
+                  <br />
+                  <label for="ml-Captain Email">Captain Email</label>
+                  <input type="email" name="ml-Captain Email" required>
+                </div>
+                <div id="mlbbinputform-2">
+                  <br />
+                  <label for="ml-Captain/Coach Number">Captain/Coach Contact Number</label>
+                  <input type="tel" name="ml-Captain/Coach Number" required>
+                  <br />
+                  <label for="ml-Captain Discord ID">Captain/Coach Discord ID</label>
+                  <input type="text" name="ml-Captain Discord ID" required>
+                  <br />
+                  <label for="ml-Captain/Coach FB Link">Team Captain/Coach Fb Link</label>
+                  <input type="text" name="ml-Captain/Coach FB Link" required>
+                  <br />
+                  <label for="payment2">Proof of payment</label>
+                  <input type="file" id="payment2" name="payment2" accept="image/*" placeholder="Proof Of Payment" required>
+                  <br />
+                  <label for="logo2">Your Team Logo</label>
+                  <input type="file" id="logo2" name="logo2" accept="image/*" placeholder="Insert your team logo" required>
+                </div>
+                <button id="nextBtn1mlbb" onclick="mlbbslidebtn()" type="button">&rsaquo;</button>
+                <button id="nextBtn2mlbb" onclick="mlbbslidebtn2()" type="button">&lsaquo;</button>
+                <div id="mlbbinputform-3">
+                  <label for="ml-Player1Name">Player 1 Name</label>
+                  <input type="text" name="ml-Player1Name" required>
+                  <br />
+                  <label for="ml-Player1IGN">Player 1 IGN</label>
+                  <input type="text" name="ml-Player1IGN" required>
+                  <br />
+                  <label for="ml-Player1MLID">Player 1 ML ID</label>
+                  <input type="text" name="ml-Player1MLID" required>
+                  <br />
+                  <label for="ml-Player1Server">Player 1 Server</label>
+                  <input type="text" name="ml-Player1Server" required>
+                  <br />
+                  <label for="ml-Player1DiscordID">Player 1 Discord ID</label>
+                  <input type="text" name="ml-Player1DiscordID" required>
+                  <br />
+                  <label for="ml-Player1FBLink">Player 1 Fb Link</label>
+                  <input type="text" name="ml-Player1FBLink" required>
+              </div>
+              <div id="mlbbinputform-4">
+                <label for="ml-Player2Name">Player 2 Name</label>
+                  <input type="text" name="ml-Player2Name" required>
+                  <br />
+                  <label for="ml-Player2IGN">Player 2 IGN</label>
+                  <input type="text" name="ml-Player2IGN" required>
+                  <br />
+                  <label for="ml-Player2MLID">Player 2 ML ID</label>
+                  <input type="text" name="ml-Player2MLID" required>
+                  <br />
+                  <label for="ml-Player2Server">Player 2 Server</label>
+                  <input type="text" name="ml-Player2Server" required>
+                  <br />
+                  <label for="ml-Player2DiscordID">Player 2 Discord ID</label>
+                  <input type="text" name="ml-Player2DiscordID" required>
+                  <br />
+                  <label for="ml-Player2FBLink">Player 2 Fb Link</label>
+                  <input type="text" name="ml-Player2FBLink" required>
+              </div>
+              <div id="mlbbinputform-5">
+                <label for="ml-Player3Name">Player 3 Name</label>
+                  <input type="text" name="ml-Player3Name" required>
+                  <br />
+                  <label for="ml-Player3IGN">Player 3 IGN</label>
+                  <input type="text" name="ml-Player3IGN" required>
+                  <br />
+                  <label for="ml-Player3MLID">Player 3 ML ID</label>
+                  <input type="text" name="ml-Player3MLID" required>
+                  <br />
+                  <label for="ml-Player3Server">Player 3 Server</label>
+                  <input type="text" name="ml-Player3Server" required>
+                  <br />
+                  <label for="ml-Player3DiscordID">Player 3 Discord ID</label>
+                  <input type="text" name="ml-Player3DiscordID" required>
+                  <br />
+                  <label for="ml-Player3FBLink">Player 3 Fb Link</label>
+                  <input type="text" name="ml-Player3FBLink" required>
+              </div>
+              <div id="mlbbinputform-6">
+                <label for="ml-Player4Name">Player 4 Name</label>
+                  <input type="text" name="ml-Player4Name" required>
+                  <br />
+                  <label for="ml-Player4IGN">Player 4 IGN</label>
+                  <input type="text" name="ml-Player4IGN" required>
+                  <br />
+                  <label for="ml-Player4MLID">Player 4 ML ID</label>
+                  <input type="text" name="ml-Player4MLID" required>
+                  <br />
+                  <label for="ml-Player4Server">Player 4 Server</label>
+                  <input type="text" name="ml-Player4Server" required>
+                  <br />
+                  <label for="ml-Player4DiscordID">Player 4 Discord ID</label>
+                  <input type="text" name="ml-Player4DiscordID" required>
+                  <br />
+                  <label for="ml-Player4FBLink">Player 4 Fb Link</label>
+                  <input type="text" name="ml-Player4FBLink" required>
+              </div>
+              <div id="mlbbinputform-7">
+                <label for="ml-Player5Name">Player 5 Name</label>
+                  <input type="text" name="ml-Player5Name" required>
+                  <br />
+                  <label for="ml-Player5IGN">Player 5 IGN</label>
+                  <input type="text" name="ml-Player5IGN" required>
+                  <br />
+                  <label for="ml-Player5MLID">Player 5 ML ID</label>
+                  <input type="text" name="ml-Player5MLID" required>
+                  <br />
+                  <label for="ml-Player5Server">Player 5 Server</label>
+                  <input type="text" name="ml-Player5Server" required>
+                  <br />
+                  <label for="ml-Player5DiscordID">Player 5 Discord ID</label>
+                  <input type="text" name="ml-Player5DiscordID" required>
+                  <br />
+                  <label for="ml-Player5FBLink">Player 5 Fb Link</label>
+                  <input type="text" name="ml-Player5FBLink" required>
+              </div>
+              
+              <div id="mlbbinputform-8">
+                <label for="ml-Player6Name">Substitue Name</label>
+                  <input type="text" name="ml-Player6Name" required>
+                  <br />
+                  <label for="ml-Player6IGN">Sub IGN</label>
+                  <input type="text" name="ml-Player6IGN" required>
+                  <br />
+                  <label for="ml-Player6MLID">Sub ML ID</label>
+                  <input type="text" name="ml-Player6MLID" required>
+                  <br />
+                  <label for="ml-Player6Server">Sub Server</label>
+                  <input type="text" name="ml-Player6Server" required>
+                  <br />
+                  <label for="ml-Player6DiscordID">Sub Discord ID</label>
+                  <input type="text" name="ml-Player6DiscordID" required>
+                  <br />
+                  <label for="ml-Player6FBLink">Sub Fb Link</label>
+                  <input type="text" name="ml-Player6FBLink" required>
+              </div>
+              
+            </div>
+              <button id="submitbtnmlbb" type="submit" style="cursor: pointer;">Submit</button>
+            </form>
+            </div>
+          </div>
+          <div class="product hidden" id="registration" data-name="registration">
+            <div id="registration-container">
+              <div id="registration-details">
+                <h1>Join the Sneaky Rivals: MLBB Online Tournament Season 1!</h1>
+                <h1>REGISTER NOW❗️❗️❗️</h1>
+                <p>Registration Fee: 75 Pesos per member (5-8 players per team)</p>
+                <p>Prize Pool: Php 50,000 cash + product loot bags from sponsors + E-Certification.</p>
+                <br>
+
+                <p>Prizes:
+                  <br>
+                  - Champion: 20,000
+                  <br>
+                  - 2nd Runner-Up: 10,000 
+                  <br>
+                  - 3rd Runner-Up: 5,000 
+                  <br>
+                  - MVP Finals: 5,000 
+                  <br>
+                  - Top 8: 2,000 
+                </p>
+                <br>
+
+                <p>How to Register:</p>
+                <p>1. Visit: <a href="https://sneakyeventsteam.com/#products">[www.sneakyeventsteam.com/#products]</a></p>
+                <p>2. Select: "MLBB Registration" under "Products"</p>
+                <p>3. Complete the form</p>
+                <p>4. Send payment to Gcash: 09951902785 (JO*****N B)</p>
+                <p>5. Message or email proof of payment</p>
+                <br>
+                <p>Presented by Sneaky Events Team</p>
+                <p>Sponsored by: TTRacing, Pro-Graphics Printing Station, Black Mamba Energy Drink, Wira Pineapple, Cuzco Kola, Hunt's, Culture Blends, Tanduay Ice, Listerine, Bactidol, Surf Philippines.</p>
+                <br />
+                <h2>Confirmation</h2>
+                <p><b>To confirm and verify your slot, please message our Facebook page and send the screenshot of the submitted form. </b></p>
+                <p>Facebook Page : <a href="https://www.facebook.com/SneakyEventsTeam">https://www.facebook.com/SneakyEventsTeam</a></p>
+                <p>Discord Server : <a href="https://discord.gg/k6Xss3D9JS">https://discord.gg/k6Xss3D9JS</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+    <!-- Product Section end -->
+
+    <!-- Testominals Section start -->
+    <section class="testimonials" id="testomonials">
+      <h2 class="heading">Testimonials</h2>
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 7</div>
+          <img src="img/tes1.png" style="width:100%">
+        </div>
+      
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 7</div>
+          <img src="img/tes2.png" style="width:100%">
+        </div>
+      
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 7</div>
+          <img src="img/tes3.png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 7</div>
+          <img src="img/tes4.png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">5 / 7</div>
+          <img src="img/tes5.png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">6 / 7</div>
+          <img src="img/tes6.png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">7 / 7</div>
+          <img src="img/tes7.png" style="width:100%">
+        </div>
+      
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+      
+      <!-- The dots/circles -->
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+      </div>
+    </section>
+    <!-- Testominals Section end -->
+
+    <!-- FAQ start -->
+    <section class="faq" id="faq">
+      <div class="faq-container">
+        <h2 class="heading">Frequently Ask Questions</h2>
+        <div class="faq-tab">
+          <input type="radio" name="ask" id="ask1">
+          <label for="ask1">
+            <h2>01</h2>
+            <h3>
+              Are there any upcoming events?</h3>
+          </label>
+          <div class="faq-content">
+            <p>Check out the Sneaky Rival event by clicking the link for more information. <a href="https://sneakyeventsteam.com/#products">https://sneakyeventsteam.com/#products</a></p>
+          </div>
+        </div>
+
+        <div class="faq-tab">
+          <input type="radio" name="ask" id="ask2">
+          <label for="ask2">
+            <h2>02</h2>
+            <h3>How do I register?</h3>
+          </label>
+          <div class="faq-content">
+            <p>Follow the steps provided by clicking the link. <a href="https://sneakyeventsteam.com/#products">https://sneakyeventsteam.com/#products</a></p>
+          </div>
+        </div>
+
+        <div class="faq-tab">
+          <input type="radio" name="ask" id="ask3">
+          <label for="ask3">
+            <h2>03</h2>
+            <h3>Which payment methods are accepted? </h3>
+          </label>
+          <div class="faq-content">
+            <p>We accept GCash, bank transfers, and Cash on Delivery.</p>
+          </div>
+        </div>
+
+        <div class="faq-tab">
+          <input type="radio" name="ask" id="ask4">
+          <label for="ask4">
+            <h2>04</h2>
+            <h3>How can I get in touch with your customer support?</h3>
+          </label>
+          <div class="faq-content">
+            <p>Click the link to visit our page directly, or contact us at 09951902785 via Viber for fast transactions. </p>
+          </div>
+        </div>
+
+        <div class="faq-tab">
+          <input type="radio" name="ask" id="ask5">
+          <label for="ask5">
+            <h2>05</h2>
+            <h3>What services do you offer?</h3>
+          </label>
+          <div class="faq-content">
+            <p>Our services include Marketing Advertising, Event Moderation, Graphic Design, Production, and Gaming Tournaments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ end -->
+
+    <!--Contact Us start -->
+    <section class="contact-us" id="contactUs">
+      <h2 class="heading">Contact Us</h2>
+      <div class="contact-wrap">
+        <div class="contact-in">
+          <h1>Contact Info</h1>
+          <h2><i class='bx bx-phone'></i>Phone</h2>
+          <p>+63-995-190-2785</p>
+          <h2><i class='bx bx-envelope' ></i>Email</h2>
+          <p>sneakyeventsteam@gmail.com</p>
+          <h2><i class='bx bx-map'></i>Address</h2>
+          <p>Go Tan Nards, Makati City,
+            Philippines</p>
+          <div class="social-media">
+            <a href="https://web.facebook.com/SneakyEventsTeam" target="_blank"><i class="bx bxl-facebook"></i></a>
+            <a href="https://www.youtube.com/@sneakyeventsteam-setonline7681" target="_blank"><i class="bx bxl-youtube"></i></a>
+            <a href="https://discord.gg/dmUYZMrkqY" target="_blank"><i class='bx bxl-discord-alt'></i></a>
+          </div>
+        </div>
+        <div class="contact-in">
+          <h1>Send a Message</h1>
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="81546f41-06a2-4672-a598-51e61dc165bd">
+            <input type="text" placeholder="Full Name" class="contact-in-input" name="name">
+            <input type="text" placeholder="Email" class="contact-in-input" name="email">
+            <input type="text" placeholder="Subject" class="contact-in-input" name="subject">
+            <textarea placeholder="Message" class="contact-in-textarea" name="message"></textarea>
+            <button type="submit" class="contact-in-btn">Submit Message</button>
+          </form>
+        </div>
+        <div class="contact-in">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.1274952398617!2d121.0149414!3d14.540084499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c93e935c665f%3A0x1cd78fc56ff96e98!2sGo%20Tan%20Nard&#39;s%20Bldg%2C%2045%20Epifanio%20de%20los%20Santos%20Ave%2C%20Makati%2C%201233%20Metro%20Manila!5e1!3m2!1sen!2sph!4v1712626227336!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+<!-- Start of sneakyeventsteam Zendesk Widget script -->
+<!--<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=efbf6519-69a9-4e54-b75b-a9e05501e9ce"> </script>-->
+<!-- End of sneakyeventsteam Zendesk Widget script -->
+    <!--BackUp Contact Us end -->
+
+    <!--Footer start-->
+    <div class="footer-icon">
+      <button onclick="toTopFunction()" id="scrollbtn"><a href="#home"><i class='bx bx-up-arrow-alt'></i></a></button>
+    </div>
+    <footer class="footer">
+      <div class="footer-text">
+        <p>Copyright &copy; Sneaky Events Team 2024 | All Rights reserved.</p>
+      </div>
+    </footer>
+    <!--Footer end-->
+</body>
+<script src="script.js"></script>
+<script src="spreadsheet.js"></script>
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 1,
+      },
+      1024: {
+        slidesPerView: 3,
+      }
+    } 
+  });
+</script>
+<script src="youtube.js"></script>
+<script src="imagesheetupload.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</html>

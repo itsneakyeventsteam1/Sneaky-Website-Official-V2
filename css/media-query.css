@@ -1,0 +1,399 @@
+@media only screen and (max-width: 768px) {
+    
+  .home {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .home-img img {
+    width: 35vw;
+  }
+  
+  .home-content h1 {
+    margin-top: 20%;
+  }
+  
+  .home-content h1 {
+    font-family: 'AbsoluteZero';
+    font-size: 2.9rem;
+    font-weight: 500;
+    margin-bottom: 5%;
+  }
+  
+  .home-content h3 {
+    font-size: 2.2rem;
+    font-weight: 550;
+    line-height: 1.3;
+  }
+  .logo {
+      font-size: 1.2rem;
+      font-family: 'AbsoluteZero';
+      color: var(--main-color);
+      font-weight: 550;
+      cursor: pointer;
+    }
+    #ticketing {
+      background-color: var(--secondary-bg-color);
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      font-family: 'Poppins';
+      font-weight: 800;
+      border-radius: 15px;
+      padding: 3% 10%;
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+    
+    #ticketing label {
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+    #ticketing select {
+      background: var(--bg-color);
+      padding: 5px 10px;
+      color: var(--main-color);
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    
+    #ticketing input[type="radio"]:checked + label {
+      color: var(--main-color);
+    }
+    #ticketing label {
+      transition: 200ms ease-in-out;
+    }
+    #ticketing label:hover {
+      color: #d47d7d;
+      scale: 1.1;
+    }
+    
+    #ticketing h2 {
+      font-weight: 800;
+      font-family: 'Tondo';
+      font-size: 1.8rem;
+    }
+    
+    #ticket-details a {
+      color: var(--main-color);
+    }
+    #ticket-details {
+      margin: 20px;
+    }
+    #ticketing input[type= "submit"] {
+      position: relative;
+      margin-top: 3%;
+      padding: 10px 20px;
+      transition: 200ms ease-in-out;
+      cursor: pointer;
+    }
+    #ticketing input[type= "submit"]:hover {
+      scale: 1.1;
+    }
+    #viewrules  {
+      display: block;
+      position: absolute;
+      right: 0;
+      
+    }
+    #viewrules button {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--main-color);
+      margin: 1px;
+      background: transparent;
+      padding: 4px 10px;
+    }
+    #viewrules button:hover {
+      box-shadow: none;
+    }
+    #closeviewbtn {
+      display: block;
+      background-color: transparent;
+      position: absolute;
+      color: var(--main-color);
+      font-weight: 800;
+      font-size: 2rem;
+      right: 0;
+      padding: 10px;
+    }
+    #ticket-container {
+      background: var(--bg-color);
+      display: none;
+      position: absolute;
+      flex-wrap: wrap;
+      flex-direction: column;
+      width: 80%;
+      height: 420px;
+      border-radius: 15px;
+      overflow: scroll;
+      animation: fadePop 200ms ease-in-out;
+    }
+    #ticketing form {
+      font-size: 1.8rem;
+    }
+    #ticketing input {
+      background-color: var(--bg-color);
+      padding: 3% 3%;
+      border-radius: 5px;
+      color: var(--main-color);
+      transition: 200ms ease-in;
+      border-bottom: 2px 2px solid transparent;
+      box-sizing: border-box;
+      border-width: 0px;
+    }
+    #ticketing input:focus {
+      border-bottom: 2px solid red;
+    }
+
+    /* Container for mission, vision, and values */
+  .tes-container {
+    display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   margin-top: 50px;
+  }
+
+/* Styling the boxes */
+  .tes-box {
+   background: var(--secondary-bg-color);
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   padding: 20px;
+   width: max-content;
+   margin-bottom: 20px;
+  }
+
+  .heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'AbsoluteZero';
+  }
+}
+
+
+@media (max-width: 700px) {
+    .home-img {
+      position: absolute;
+      z-index: -1;
+      left: 50%;
+      bottom: 0%;
+      transform: translate(-50%, -50%);
+    }
+    .home-img img {
+      width: 100%;
+      image-rendering: optimizeSpeed;
+    }
+  
+    .items-links {
+      justify-content: space-between;
+      gap: 15px;
+    }
+  
+    .items-links {
+      display: flex;
+      flex-direction: column;
+    }
+    .item-link {
+      width: 60%;
+      text-align: center;
+    }
+    [class ^= "popup-content-"]{
+      width: 100%;
+      height: 70%;
+      position: absolute;
+      left: 0;
+      top: 20%;
+    }
+    .popup-content-1 {
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    .popup-content-2 {
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    .popup-content-2 {
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+  
+    .close-button {
+      width: 10%;
+    }
+    .reg-data {
+      margin: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+    }
+    
+    .reg-data div {
+      margin: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+    }
+    
+    
+    .reg-data div input {
+      color: var(--main-color);
+      font-weight: 600;
+      height: 30%;
+      width: 220px;
+      background-color: transparent;
+      border-radius: 15px;
+      border: 1px solid var(--main-color);
+    }
+    
+    .reg-data #inputform-1 {
+      display: flex;
+      flex-direction: column;
+    }
+    .reg-data #inputform-2 {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    #inputform-1 input,
+    #inputform-2 input{
+      padding: 5%;
+    }
+    #inputform-1 label,
+    #inputform-2 label{
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+}
+
+
+@media (max-width: 768px) {
+    #menu-icon {
+      display: block;
+    }
+    body {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .navbar {
+      position: absolute;
+      top: 100%;
+      left: 2%;
+      width: 95%;
+      border-radius: 10px;
+      padding: 1rem 3%;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.66);
+      border-top: .1rem solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+    .navbar.active {
+      display: block;
+    }
+    .navbar a {
+      display: block;
+      font-size: 2rem;
+      margin: 3rem 0;
+      max-width: fit-content;
+    }
+    .navbar a:hover {
+      color: var(--secondary-bg-color);
+      max-width: fit-content;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    html {
+      font-size: 55%;
+    }
+  }
+  @media (max-width: 991px) {
+    .header {
+      padding: 2rem 3%;
+    }
+    section {
+      padding: 10rem 3% 2rem;
+    }
+    .footer {
+      padding: 2rem 3%;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .contact-in:nth-child(1) {
+      flex: 50%;
+    }
+    .contact-in:nth-child(2) {
+      flex: 50%;
+    }
+    .contact-in:nth-child(3) {
+      flex: 100%;
+    }
+  }
+  @media only screen and (max-width: 360px) {
+    .contact-in:nth-child(1) {
+      flex: 50%;
+    }
+    .contact-in:nth-child(2) {
+      flex: 50%;
+    }
+    .contact-in:nth-child(3) {
+      flex: 100%;
+    }
+  }
+  
+  /*......Product section responsive start......*/
+  @media (max-width: 1024px) {
+    .container {
+      width: 90%;
+    }
+    .items-links {
+      width: 100%;
+    }
+    .popup-content {
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .items-links {
+      width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    div [class ^= "item-link-"] {
+      padding: 5px 30px;
+      width: 170px;
+      text-align: center;
+    }
+    #item-link-select {
+      width: 150px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #ticketproof {
+      max-width: 80%;
+      min-width: 50%;
+      box-sizing: border-box;
+    }
+  
+    fieldset {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5;
+      justify-content: center;
+      margin: 10px;
+      flex-grow: 1;
+    }
+    [id^="labeldate-"] {
+      padding: 10px 20px;
+      margin-bottom: 20px;
+    }
+  }
