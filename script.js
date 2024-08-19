@@ -516,33 +516,68 @@ form.addEventListener("submit", function (_0x25321e) {
     alert("Please fill in all required fields.");
   }
 });
-let slideIndex = 0x1;
-showSlides(slideIndex);
-function plusSlides(_0x88b6a2) {
-  showSlides(slideIndex += _0x88b6a2);
+
+
+let slideIndex = 1;
+function initializeSlides(totalSlides) {
+  const slideshowContainer = document.getElementsByClassName('slideshow-container')[0];
+  const dotsContainer = document.getElementById('dots');
+
+  for (let i = 1; i <= totalSlides; i++) {
+    // Create slide
+    let slide = document.createElement('div');
+    slide.className = 'mySlides fade';
+    slide.innerHTML = `
+      <div class="numbertext">${i} / ${totalSlides}</div>
+      <img src="img/Testimonials/tes${i}.png" style="width:100%">
+    `;
+    slideshowContainer.appendChild(slide);
+
+    // Create dot
+    let dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.onclick = function() { currentSlide(i); };
+    dotsContainer.appendChild(dot);
+  }
+  
+  showSlides(slideIndex);
 }
-function currentSlide(_0x4a8987) {
-  showSlides(slideIndex = _0x4a8987);
+
+function showSlides(n) {
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName('dot');
+
+  if (n > slides.length) {
+    slideIndex = 1;
+  } 
+  if (n < 1) {
+    slideIndex = slides.length;
+  } else {
+    slideIndex = n;
+  }
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none';  
+  }
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", '');
+  }
+
+  slides[slideIndex - 1].style.display = 'block';
+  dots[slideIndex - 1].className += " active";
 }
-function showSlides(_0x239410) {
-  let _0x1c2a75;
-  let _0x21b422 = document.getElementsByClassName("mySlides");
-  let _0x59cfab = document.getElementsByClassName('dot');
-  if (_0x239410 > _0x21b422.length) {
-    slideIndex = 0x1;
-  }
-  if (_0x239410 < 0x1) {
-    slideIndex = _0x21b422.length;
-  }
-  for (_0x1c2a75 = 0x0; _0x1c2a75 < _0x21b422.length; _0x1c2a75++) {
-    _0x21b422[_0x1c2a75].style.display = 'none';
-  }
-  for (_0x1c2a75 = 0x0; _0x1c2a75 < _0x59cfab.length; _0x1c2a75++) {
-    _0x59cfab[_0x1c2a75].className = _0x59cfab[_0x1c2a75].className.replace(" active", '');
-  }
-  _0x21b422[slideIndex - 0x1].style.display = 'block';
-  _0x59cfab[slideIndex - 0x1].className += " active";
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
 }
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+initializeSlides(32);
+
+
+
   
   // About Us Pop up
 var modal = document.getElementById("myModal");
