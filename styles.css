@@ -63,6 +63,7 @@ input::-webkit-file-upload-button:hover {
   --main-color: #C5D20D;
   --content-color: #9ea72d;
   --bg-gradient: linear-gradient(133deg, #010101 0%, #131410 54%, #1d1d03 100%);
+  --background-color: #0f1923;
 }
 html {
   font-size: 62.5%;
@@ -1016,18 +1017,70 @@ div [class ^= "item-link-"]:hover {
   justify-content: center;
 }
 
-#registration-title-v,
 #registration-title-m {
+  font-weight: 600;
+  font-size: 2.8rem;
+  position: absolute;
+  margin: 25px;
+  top: 0;
+  color: #ece8e1;
+}
+
+#registration-title-v {
   font-weight: 600;
   font-size: 1.8rem;
   position: absolute;
   margin: 25px;
+  bottom: 0;
+}
+
+@media screen and (max-width: 924px) {
+  #registration-title-v,
+  #registration-title-m {
+    font-weight: 600;
+    font-size: 1.8rem;
+    position: absolute;
+    margin: 10px;
+    bottom: 5%;
+  }
 }
 #registration-title-v {
   font-family: 'Valorant';
+  writing-mode: vertical-rl;
 }
 #registration-title-m {
   font-family: 'MLBB';
+}
+
+@media screen and (max-width: 424px) {
+  #registration-title-v,
+  #registration-title-m {
+    font-weight: 600;
+    font-size: 1.5rem;
+    position: absolute;
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #registration-title-v,
+  #registration-title-m {
+    font-weight: 600;
+    font-size: 1.3rem;
+    position: absolute;
+    margin: 10px;
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 764px) {
+  #registration-title-v,
+  #registration-title-m {
+    font-weight: 600;
+    font-size: 1.2rem;
+    position: absolute;
+    margin: 10px;
+  }
 }
 
 
@@ -1036,47 +1089,6 @@ div [class ^= "item-link-"]:hover {
   z-index: 90;
 }
 
-#submitbtnvalo {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 2%;
-  color: var(--main-color);
-  font-weight: 800;
-  padding: 10px 25px;
-  background: transparent;
-  border: 1px solid var(--main-color);
-  border-radius: 20px;
-  transition: 200ms ease-in-out;
-  animation: btnFade 0.5s ease-in-out;
-  display: none;
-}
-#submitbtnvalo:hover {
-  background: var(--main-color);
-  color: white;
-  font-weight: 800;
-}
-
-#submitbtnmlbb {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 2%;
-  color: var(--main-color);
-  font-weight: 800;
-  padding: 10px 25px;
-  background: transparent;
-  border: 1px solid var(--main-color);
-  border-radius: 20px;
-  transition: 200ms ease-in-out;
-  animation: btnFade 0.5s ease-in-out;
-  display: none;
-}
-#submitbtnmlbb:hover {
-  background: var(--main-color);
-  color: white;
-  font-weight: 800;
-}
 @keyframes btnFade {
   0% {
     opacity: 0;
@@ -1090,151 +1102,6 @@ div [class ^= "item-link-"]:hover {
   margin: 50px;
   display: flex;
   flex-direction: column;
-}
-
-#secondpage-valo div input {
-  color: var(--main-color);
-  font-weight: 600;
-  height: 30%;
-  width: 220px;
-  background-color: transparent;
-  border-radius: 10px;
-  border: 1px solid var(--main-color);
-}
-
-.reg-data div input {
-  color: var(--main-color);
-  font-weight: 600;
-  height: 30%;
-  width: 220px;
-  background-color: transparent;
-  border-radius: 10px;
-  border: 1px solid var(--main-color);
-}
-
-
-.reg-data #inputform-1,
-.reg-data #inputform-2  {
-  display: flex;
-  flex-direction: column;
-}
-#inputform-3,
-#inputform-4,
-#inputform-5,
-#inputform-6,
-#inputform-7 {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  display: none;
-}
-
-#nextBtn1valo {
-  background-color: transparent;
-  border: none;
-  padding: 15px 5px;
-  position: absolute;
-  right: 20px;
-  font-weight: 800;
-  font-size: 5.8rem;
-  color: var(--main-color);
-}
-#nextBtn2valo {
-  background-color: transparent;
-  border: none;
-  padding: 15px 5px;
-  position: absolute;
-  left: 20px;
-  font-weight: 800;
-  font-size: 5.8rem;
-  color: var(--main-color);
-  display: none;
-}
-#nextBtn1valo:hover,
-#nextBtn2valo:hover {
-  box-shadow: none;
-  text-shadow: 1px 1px 3px var(--main-color),
-   -1px -1px 3px var(--main-color);
-}
-
-#nextBtn1mlbb {
-  background-color: transparent;
-  border: none;
-  padding: 15px 5px;
-  position: absolute;
-  right: 20px;
-  font-weight: 800;
-  font-size: 5.8rem;
-  color: var(--main-color);
-}
-#nextBtn2mlbb {
-  background-color: transparent;
-  border: none;
-  padding: 15px 5px;
-  position: absolute;
-  left: 20px;
-  font-weight: 800;
-  font-size: 5.8rem;
-  color: var(--main-color);
-  display: none;
-}
-#nextBtn1mlbb:hover,
-#nextBtn2mlbb:hover {
-  box-shadow: none;
-  text-shadow: 1px 1px 3px var(--main-color),
-   -1px -1px 3px var(--main-color);
-}
-
-
-#inputform-1 input,
-#inputform-2 input {
-  padding: 5%;
-}
-#inputform-3 input,
-#inputform-4 input,
-#inputform-5 input,
-#inputform-6 input,
-#inputform-7 input{
-  padding: 5%;
-  width: 150px;
-}
-#inputform-1 label,
-#inputform-2 label {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-#inputform-3 label,
-#inputform-4 label,
-#inputform-5 label,
-#inputform-6 label,
-#inputform-7 label{
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-#inputform-3 select,
-#inputform-4 select,
-#inputform-5 select,
-#inputform-6 select,
-#inputform-7 select {
-  border: 1px solid var(--main-color);
-  padding: 5%;
-  font-weight: 500;
-  width: 150px;
-  color: var(--main-color);
-  cursor: pointer;
-  border-radius: 10px;
-  transition: 0.4s ease-in-out;
-  background: transparent;
-  overflow: hidden;
-}
-#inputform-3 option[value],
-#inputform-4 option[value],
-#inputform-5 option[value],
-#inputform-6 option[value],
-#inputform-7 option[value] {
-  background-color: var(--secondary-bg-color);
-  font-weight: 500;
 }
 
 option[value = 'valorant'] {
@@ -1256,6 +1123,292 @@ option[value = 'mlbb'] {
   animation: popUp 300ms ease-in-out;
   display: none;
 }
+
+.registration2 img{
+  width: 100%;
+  
+}
+.registration img{
+  width: 100%;
+}
+
+#registration-valo .btn {
+  box-shadow: none;
+  /* Clean style */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--button-text-color);
+  cursor: pointer;
+  /* Clean style */
+  
+  --button-text-color: var(--background-color);
+  --button-text-color-hover: var(--button-background-color);
+  --border-color: #7D8082;
+  --button-background-color: #ece8e1;
+  --highlight-color: #ff4655;
+  --button-inner-border-color: transparent;
+  --button-bits-color: var(--background-color);
+  --button-bits-color-hover: var(--button-background-color);
+  
+  position: absolute;
+  padding: 8px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.3rem;
+  transition: all .15s ease;
+  bottom: 30%;
+  right: 15%;
+}
+
+@media screen and (max-width: 1024px) {
+  #registration-valo .btn {
+    box-shadow: none;
+    /* Clean style */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--button-text-color);
+    cursor: pointer;
+    /* Clean style */
+    
+    --button-text-color: var(--background-color);
+    --button-text-color-hover: var(--button-background-color);
+    --border-color: #7D8082;
+    --button-background-color: #ece8e1;
+    --highlight-color: #ff4655;
+    --button-inner-border-color: transparent;
+    --button-bits-color: var(--background-color);
+    --button-bits-color-hover: var(--button-background-color);
+    position: absolute;
+    padding: 8px;
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    transition: all .15s ease;
+    bottom: 25%;
+    right: 13%;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  #registration-valo .btn {
+    box-shadow: none;
+    /* Clean style */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--button-text-color);
+    cursor: pointer;
+    /* Clean style */
+    
+    --button-text-color: var(--background-color);
+    --button-text-color-hover: var(--button-background-color);
+    --border-color: #7D8082;
+    --button-background-color: #ece8e1;
+    --highlight-color: #ff4655;
+    --button-inner-border-color: transparent;
+    --button-bits-color: var(--background-color);
+    --button-bits-color-hover: var(--button-background-color);
+    position: absolute;
+    padding: 8px;
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    transition: all .15s ease;
+    bottom: 25%;
+    right: 10%;
+  }
+}
+
+@media screen and (max-width: 764px) {
+  #registration-valo .btn {
+    box-shadow: none;
+    /* Clean style */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--button-text-color);
+    cursor: pointer;
+    /* Clean style */
+    
+    --button-text-color: var(--background-color);
+    --button-text-color-hover: var(--button-background-color);
+    --border-color: #7D8082;
+    --button-background-color: #ece8e1;
+    --highlight-color: #ff4655;
+    --button-inner-border-color: transparent;
+    --button-bits-color: var(--background-color);
+    --button-bits-color-hover: var(--button-background-color);
+    position: absolute;
+    padding: 8px;
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    transition: all .15s ease;
+    bottom: 5%;
+    right: 5%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  #registration-valo .btn {
+    box-shadow: none;
+    /* Clean style */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--button-text-color);
+    cursor: pointer;
+    /* Clean style */
+    
+    --button-text-color: var(--background-color);
+    --button-text-color-hover: var(--button-background-color);
+    --border-color: #7D8082;
+    --button-background-color: #ece8e1;
+    --highlight-color: #ff4655;
+    --button-inner-border-color: transparent;
+    --button-bits-color: var(--background-color);
+    --button-bits-color-hover: var(--button-background-color);
+    position: absolute;
+    padding: 8px;
+    margin-bottom: 0;
+    font-size: 1.0rem;
+    transition: all .15s ease;
+    bottom: 5%;
+    right: 5%;
+  }
+}
+
+#registration-valo .btn::before,
+#registration-valo .btn::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0; left: 0;
+  height: calc(50% - 5px);
+  border: 1px solid var(--border-color);
+  transition: all .15s ease;
+}
+
+#registration-valo .btn::before {
+  top: 0;
+  border-bottom-width: 0;
+}
+
+#registration-valo .btn::after {
+  bottom: 0;
+  border-top-width: 0;
+}
+
+#registration-valo .btn:active,
+#registration-valo .btn:focus {
+  outline: none;
+}
+
+#registration-valo .btn:active::before,
+#registration-valo .btn:active::after {
+  right: 3px;
+  left: 3px;
+}
+
+#registration-valo .btn:active::before {
+  top: 3px;
+}
+
+#registration-valo .btn:active::after {
+  bottom: 3px;
+}
+
+#registration-valo .btn__inner {
+  position: relative;
+  display: block;
+  padding: 20px 30px;
+  background-color: var(--button-background-color);
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 1px var(--button-inner-border-color);
+}
+
+#registration-valo .btn__inner::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0; left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: var(--button-bits-color);
+}
+
+#registration-valo .btn__inner::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0; bottom: 0;
+  width: 4px;
+  height: 4px;
+  background-color: var(--button-bits-color);
+  transition: all .2s ease;
+}
+
+#registration-valo .btn__slide {
+  display: block;
+  position: absolute;
+  top: 0; bottom: -1px; left: -8px;
+  width: 0;
+  background-color: var(--highlight-color);
+  transform: skew(-15deg);
+  transition: all .2s ease;
+}
+
+#registration-valo .btn__content {
+  position: relative;
+  text-decoration: none;
+}
+#registration-valo .btn__content a{
+  position: relative;
+  text-decoration: none;
+  color: var(--button-text-color);
+}
+
+#registration-valo .btn:hover {
+  color: var(--button-text-color-hover);
+  scale: 0.9;
+}
+
+#registration-valo .btn:hover .btn__slide {
+  width: calc(100% + 15px);
+}
+
+#registration-valo .btn:hover .btn__inner::after {
+  background-color: var(--button-bits-color-hover);
+}
+
+#registration-mlbb button{
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  width: fit-content;
+  border-radius: 3px; 
+  position: absolute;
+  padding: 20px 30px;
+  top: 50%;
+  right: 15%;
+  transform: translate(-50%, 0, 0, -15%);
+  font-family: 'MLBB';
+}
+
 @keyframes popUp {
   0% {
     opacity: 0;
@@ -1281,26 +1434,7 @@ option[value = 'mlbb'] {
   align-items: center;
   justify-content: center;
 }
-#submitbtnvalo {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 2%;
-  color: var(--main-color);
-  font-weight: 800;
-  padding: 10px 25px;
-  background: transparent;
-  border: 1px solid var(--main-color);
-  border-radius: 20px;
-  transition: 200ms ease-in-out;
-  animation: btnFade 0.5s ease-in-out;
-  display: none;
-}
-#submitbtnvalo:hover {
-  background: var(--main-color);
-  color: white;
-  font-weight: 800;
-}
+
 @keyframes btnFade {
   0% {
     opacity: 0;
@@ -1316,71 +1450,6 @@ option[value = 'mlbb'] {
   flex-direction: column;
 }
 
-#secondpage-valo div input {
-  color: var(--main-color);
-  font-weight: 600;
-  height: 30%;
-  width: 220px;
-  background-color: transparent;
-  border-radius: 10px;
-  border: 1px solid var(--main-color);
-}
-
-.reg-data div input {
-  color: var(--main-color);
-  font-weight: 600;
-  height: 30%;
-  width: 220px;
-  background-color: transparent;
-  border-radius: 10px;
-  border: 1px solid var(--main-color);
-}
-
-.reg-data #mlbbinputform-1,
-.reg-data #mlbbinputform-2  {
-  display: flex;
-  flex-direction: column;
-}
-#mlbbinputform-3,
-#mlbbinputform-4,
-#mlbbinputform-5,
-#mlbbinputform-6,
-#mlbbinputform-7,
-#mlbbinputform-8 {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  display: none;
-}
-
-
-#mlbbinputform-1 input,
-#mlbbinputform-2 input {
-  padding: 5%;
-}
-#mlbbinputform-3 input,
-#mlbbinputform-4 input,
-#mlbbinputform-5 input,
-#mlbbinputform-6 input,
-#mlbbinputform-7 input,
-#mlbbinputform-8 input{
-  padding: 5%;
-  width: 150px;
-}
-#mlbbinputform-1 label,
-#mlbbinputform-2 label {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-#mlbbinputform-3 label,
-#mlbbinputform-4 label,
-#mlbbinputform-5 label,
-#mlbbinputform-6 label,
-#mlbbinputform-7 label,
-#mlbbinputform-8 label{
-  font-size: 1.2rem;
-  font-weight: 600;
-}
 /*          Registration-END           */
 
 

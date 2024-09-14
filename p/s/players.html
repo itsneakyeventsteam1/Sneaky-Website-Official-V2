@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin S.E.T</title>
+  <link rel="stylesheet" href="/p/s/s/assets/css/style.css">
+  <link rel="stylesheet" href="/p/s/s/assets/css/drawer.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+  <!--  Plugins  -->
+
+</head>
+<body>
+  <header >
+    <button class="menu-btn" id="menuBtn">&#9776;</button>
+    <nav class="drawer" id="drawer">
+      <a href="admin.html">Home</a>
+      <a href="players.html">Games</a>
+      <a href="account.html">Account Management</a>
+    </nav>
+
+    <div id="selection">
+      <select name="Select Games" id="select-game">
+        <option value="mlbb">Mobile Legends</option>
+        <option value="valorant">Valorant</option>
+      </select>
+    </div>
+  </header>
+
+
+  <main>
+    <div id="mlbb-mode">
+      <div id="Mlbb-Registration">
+        <h2>Mlbb Registration Table</h2>
+        <div class="loading" id="loading" style="display: none;">Loading data...</div>
+        <button id="delete-selected">Delete</button>
+          <table>
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="select-all">Select All</th>
+                <th>Timestamp</th>
+                <th>Email</th>
+                <th>Team Name</th>
+                <th>Short Team Name</th>
+                <th>Captain Name</th>
+                <th>Captain Email</th>
+                <th>Captain Number</th>
+                <th>Captain Discord</th>
+                <th>Captain FB Link</th>
+                <th>Player 1 Name</th>
+                <th>Player 1 IGN</th>
+                <th>Player 1 MLID</th>
+                <th>Player 1 Server</th>
+                <th>Player 1 Discord ID</th>
+                <th>Player 1 FB Link</th>
+                <th>Player 2 Name</th>
+                <th>Player 2 IGN</th>
+                <th>Player 2 MLID</th>
+                <th>Player 2 Server</th>
+                <th>Player 2 Discord ID</th>
+                <th>Player 2 FB Link</th>
+                <th>Player 3 Name</th>
+                <th>Player 3 IGN</th>
+                <th>Player 3 MLID</th>
+                <th>Player 3 Server</th>
+                <th>Player 3 Discord ID</th>
+                <th>Player 3 FB Link</th>
+                <th>Player 4 Name</th>
+                <th>Player 4 IGN</th>
+                <th>Player 4 MLID</th>
+                <th>Player 4 Server</th>
+                <th>Player 4 Discord ID</th>
+                <th>Player 4 FB Link</th>
+                <th>Player 5 Name</th>
+                <th>Player 5 IGN</th>
+                <th>Player 5 MLID</th>
+                <th>Player 5 Server</th>
+                <th>Player 5 Discord ID</th>
+                <th>Player 5 FB Link</th>
+                <th>Player 6 Name</th>
+                <th>Player 6 IGN</th>
+                <th>Player 6 MLID</th>
+                <th>Player 6 Server</th>
+                <th>Player 6 Discord ID</th>
+                <th>Player 6 FB Link</th>
+                <th>Payment URL</th>
+                <th>Logo URL</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <!-- Javascript -->
+            </tbody>
+          </table>
+        </div>
+    </div>
+
+    <div id="valorant-mode" style="display: none;">
+      <div id="Valorant-Registration">
+        <h2>Valorant Registration Table</h2>
+        <div class="loading" id="loading" style="display: none;">Loading data...</div>
+        <button id="vdelete-selected">Delete</button>
+          <table>
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="v-select-all">Select All</th>
+                <th>Timestamp</th>
+                <th>Email</th>
+                <th>Team Name</th>
+                <th>Player 1 Name</th>
+                <th>Player 1 Riot Id</th>
+                <th>Player 2 Name</th>
+                <th>Player 2 Riot Id</th>
+                <th>Player 3 Name</th>
+                <th>Player 3 Riot Id</th>
+                <th>Logo URL</th>
+                <th>Photo of player</th>
+                <th>Profile</th>
+                <th>Fb Page of School</th>
+                <th>Fb Page of Esport Team</th>
+              </tr>
+            </thead>
+            <tbody id="tablev-body">
+              <!-- Javascript -->
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </main>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="/p/s/script.js"></script>
+<script src="drawer.js"></script>
+
+</html>

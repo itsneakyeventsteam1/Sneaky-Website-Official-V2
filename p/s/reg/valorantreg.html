@@ -1,0 +1,81 @@
+<!DOCTYPE htvl>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Registration</title>
+  <link rel="stylesheet" href="/p/s/s/assets/css/valorant.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.0/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.0/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+  <div class="pageTitle">
+    <h2>VALORANT Team Registration</h2>
+  </div>
+  <div class="formBody">
+    <img id="vyseflower" src="/p/s/s/img/0cd35584b7c20c0e429c6239a52c87f15e546e4.png" alt="image">
+    <form method="POST" name="reg-form-2" enctype="multipart/form-data">
+      <div class="container">
+        <div class="pageForm-wrapper">
+            <div class="pageForm">
+                <h2>VALORANT</h2>
+            </div>
+        </div>
+    </div>
+      <div class="reg-data" id="reg-data">
+        <!-- Team Information -->
+        <label for="vl-Email">Email</label></br>
+        <input type="email" name="vl-Email" placeholder="Email" required><br />
+  
+        <label for="vl-Team Name">Team Name</label></br>
+        <input type="text" name="vl-Team Name" placeholder="Team Name" required><br />
+  
+        <label for="photoofplayer">Photo of player</label></br>
+        <input type="file" id="photoofplayer" name="photoofplayer" accept="image/*" required><br />
+  
+        <label for="logo2">Logo</label></br>
+        <input type="file" id="logo2" name="logo2" accept="image/*" required><br />
+  
+        <label for="profile">Profile</label></br>
+        <input type="file" id="profile" name="profile" accept="image/*" required><br />
+  
+        <h3>Players Information</h3>
+        <h5>Player 1</h5>
+        <label for="vl-Player1Name" style="display: none;">Name</label></br>
+        <input type="text" name="vl-Player1Name" placeholder="Name" required><br />
+  
+        <label for="vl-Player1RiotId" style="display: none;">Riot Id</label></br>
+        <input type="text" name="vl-Player1RiotId" placeholder="Riot Id" required><br />
+        </br>
+        <h5>Player 2</h5>
+        <label for="vl-Player2Name" style="display: none;">Player 2 Name</label></br>
+        <input type="text" name="vl-Player2Name" placeholder="Name" required><br />
+  
+        <label for="vl-Player2Riot Id" style="display: none;">Player 2 Riot Id</label></br>
+        <input type="text" name="vl-Player2RiotId" placeholder="Riot Id" required><br />
+        </br>
+        <h5>Player 3</h5>
+        <label for="vl-Player3Name" style="display: none;">Player 3 Name</label></br>
+        <input type="text" name="vl-Player3Name" placeholder="Name" required><br />
+  
+        <label for="vl-Player3RiotId" style="display: none;">Player 3 Riot Id</label></br>
+        <input type="text" name="vl-Player3RiotId" placeholder="Riot Id" required><br />
+
+        <h3>Other Information</h3>
+        <img id="vyseflower1" src="/p/s/s/img/0cd35584b7c20c0e429c6239a52c87f15e546e47.png" alt="image">
+        <label for="vl-fbpageofschool" style="display: none;">Fb Page of School</label></br>
+        <input type="text" name="vl-fbpageofschool" placeholder="Fb Page of School (link*)" required><br />
+  
+        <label for="vl-fbPageEsportUrl" style="display: none;">Fb Page of Esport Team</label></br>
+        <input type="text" name="vl-fbPageEsportUrl" placeholder="Fb Page of Esport Team (link*)" required><br />
+  
+        </br>
+
+        <button id="submitbtnvlbb" type="submit">Submit</button>
+      </div>
+    </form>
+    
+  </div>
+</body>
+<script type="module" src="vscript.js"></script>
+</html>

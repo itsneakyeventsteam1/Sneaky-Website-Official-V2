@@ -363,7 +363,7 @@
           <span class="item-link-3" id="item-link" data-target="registration">Registration
             <select class="item-link-4" id="item-link-select" data-target="registration1">
               <option value=" ">Select</option>
-              <option value="valorant" disabled>VALORANT</option>
+              <option value="valorant">VALORANT</option>
               <option value="mlbb">MLBB</option>
             </select>
           </span>
@@ -513,349 +513,31 @@
         <!--Filter images-->
         <div class="registration product hidden" id="registrationform" data-name="registration">
           <div class="registration" id="registration-valo" data-name="registration1">
-            <div id="loader-1">
-              <div class="loader-spin"></div>
-              <p>Your data is processing.<img src="/img/SETLOGOSILVER.png" /></p>
-            </div>
             <p id="registration-title-v">
               VALORANT REGISTRATION
             </p>
-            <form method="POST" name="reg-form" action="https://script.google.com/macros/s/AKfycby_yLGqeuo3EmPMADNMOEpiswsoW2KhfdDIxs8qKTGN2fCXMkBmCGsBJ1X3BGCO9dE/exec">
-              <div class="reg-data" id="reg-data">
-                <div id="inputform-1">
-                  <label for="Email">Email</label>
-                  <input type="email" name="Email" required>
-                  <br />
-                  <label for="Team Name">Team Name</label>
-                  <input type="text" name="Team Name" required>
-                  <br />
-                  <label for="Short Team Name">Short Team Name</label>
-                  <input type="text" name="Short Team Name" required>
-                  <br />
-                  <label for="Team Captain Name">Team Captain/Coach Name</label>
-                  <input type="text" name="Team Captain Name" required>
-                  <br />
-                  <label for="Captain Email">Captain Email</label>
-                  <input type="email" name="Captain Email" required>
-                </div>
-                <div id="inputform-2">
-                  <br />
-                  <label for="Captain/Coach Number">Captain/Coach Contact Number</label>
-                  <input type="tel" name="Captain/Coach Number" required>
-                  <br />
-                  <label for="Captain Discord ID">Captain/Coach Discord ID</label>
-                  <input type="text" name="Captain Discord ID" required>
-                  <br />
-                  <label for="Captain/Coach FB Link">Team Captain/Coach Fb Link</label>
-                  <input type="text" name="Captain/Coach FB Link" required>
-                  <br />
-                  <label for="payment">Proof of payment</label>
-                  <input type="file" id="payment" name="payment" accept="image/*" placeholder="Proof Of Payment" required>
-                  <br />
-                  <label for="logo">Your Team Logo</label>
-                  <input type="file" id="logo" name="logo" accept="image/*" placeholder="Insert your team logo" required>
-                </div>
-              <button id="nextBtn1valo" onclick="valoslidebtn()" type="button">&rsaquo;</button>
-              <button id="nextBtn2valo" onclick="valoslidebtn2()" type="button">&lsaquo;</button>
-                <div id="inputform-3">
-                  <label for="Player1Name">Player 1 Name</label>
-                  <input type="text" name="Player1Name" required>
-                  <br />
-                  <label for="Player1RiotId">Player 1 Riot Id + Tagline</label>
-                  <input type="text" name="Player1RiotId" required>
-                  <br />
-                  <label for="Player1Rank">Player 1 Rank</label>
-                  <select name="Player1Rank" id="rank-valo">
-                      <option value="Iron">IRON</option>
-                      <option value="Bronze">BRONZE</option>
-                      <option value="Silver">SILVER</option>
-                      <option value="Gold">GOLD</option>
-                      <option value="Platinum">PLATINUM</option>
-                      <option value="Diamond">DIAMOND</option>
-                      <option value="Ascendat">ASCENDAT</option>
-                      <option value="Immortal">IMMORTAL</option>
-                      <option value="Radiant">RADIANT</option>
-                  </select>
-                  <br />
-                  <label for="Player1DiscordID">Player 1 Discord ID</label>
-                  <input type="text" name="Player1DiscordID" required>
-                  <br />
-                  <label for="Player1FBLink">Player 1 Fb Link</label>
-                  <input type="text" name="Player1FBLink" required>
-              </div>
-              <div id="inputform-4">
-                <label for="Player2Name">Player 2 Name</label>
-                <input type="text" name="Player2Name" required>
-                <br />
-                <label for="Player2RiotId">Player 1 Riot Id + Tagline</label>
-                <input type="text" name="Player2RiotId" required>
-                <br />
-                <label for="Player2Rank">Player 1 Rank</label>
-                <select name="Player2Rank" id="rank-valo">
-                    <option value="Iron">IRON</option>
-                    <option value="Bronze">BRONZE</option>
-                    <option value="Silver">SILVER</option>
-                    <option value="Gold">GOLD</option>
-                    <option value="Platinum">PLATINUM</option>
-                    <option value="Diamond">DIAMOND</option>
-                    <option value="Ascendat">ASCENDAT</option>
-                    <option value="Immortal">IMMORTAL</option>
-                    <option value="Radiant">RADIANT</option>
-                </select>
-                <br />
-                <label for="Player2DiscordID">Player 1 Discord ID</label>
-                <input type="text" name="Player2DiscordID" required>
-                <br />
-                <label for="Player2FBLink">Player 1 Fb Link</label>
-                <input type="text" name="Player2FBLink" required>
-              </div>
-              <div id="inputform-5">
-                <label for="Player3Name">Player 3 Name</label>
-                <input type="text" name="Player3Name" required>
-                <br />
-                <label for="Player3RiotId">Player 3 Riot Id + Tagline</label>
-                <input type="text" name="Player3RiotId" required>
-                <br />
-                <label for="Player3Rank">Player 3 Rank</label>
-                <select name="Player3Rank" id="rank-valo">
-                    <option value="Iron">IRON</option>
-                    <option value="Bronze">BRONZE</option>
-                    <option value="Silver">SILVER</option>
-                    <option value="Gold">GOLD</option>
-                    <option value="Platinum">PLATINUM</option>
-                    <option value="Diamond">DIAMOND</option>
-                    <option value="Ascendat">ASCENDAT</option>
-                    <option value="Immortal">IMMORTAL</option>
-                    <option value="Radiant">RADIANT</option>
-                </select>
-                <br />
-                <label for="Player3DiscordID">Player 3 Discord ID</label>
-                <input type="text" name="Player3DiscordID" required>
-                <br />
-                <label for="Player3FBLink">Player 3 Fb Link</label>
-                <input type="text" name="Player3FBLink" required>
-              </div>
-              <div id="inputform-6">
-                <label for="Player4Name">Player 4 Name</label>
-                <input type="text" name="Player4Name" required>
-                <br />
-                <label for="Player4RiotId">Player 4 Riot Id + Tagline</label>
-                <input type="text" name="Player4RiotId" required>
-                <br />
-                <label for="Player4Rank">Player 4 Rank</label>
-                <select name="Player4Rank" id="rank-valo">
-                    <option value="Iron">IRON</option>
-                    <option value="Bronze">BRONZE</option>
-                    <option value="Silver">SILVER</option>
-                    <option value="Gold">GOLD</option>
-                    <option value="Platinum">PLATINUM</option>
-                    <option value="Diamond">DIAMOND</option>
-                    <option value="Ascendat">ASCENDAT</option>
-                    <option value="Immortal">IMMORTAL</option>
-                    <option value="Radiant">RADIANT</option>
-                </select>
-                <br />
-                <label for="Player4DiscordID">Player 4 Discord ID</label>
-                <input type="text" name="Player4DiscordID" required>
-                <br />
-                <label for="Player4FBLink">Player 4 Fb Link</label>
-                <input type="text" name="Player4FBLink" required>
-              </div>
-              <div id="inputform-7">
-                <label for="Player5Name">Player 5 Name</label>
-                <input type="text" name="Player5Name" required>
-                <br />
-                <label for="Player5RiotId">Player 5 Riot Id + Tagline</label>
-                <input type="text" name="Player5RiotId" required>
-                <br />
-                <label for="Player5Rank">Player 5 Rank</label>
-                <select name="Player5Rank" id="rank-valo">
-                    <option value="Iron">IRON</option>
-                    <option value="Bronze">BRONZE</option>
-                    <option value="Silver">SILVER</option>
-                    <option value="Gold">GOLD</option>
-                    <option value="Platinum">PLATINUM</option>
-                    <option value="Diamond">DIAMOND</option>
-                    <option value="Ascendat">ASCENDAT</option>
-                    <option value="Immortal">IMMORTAL</option>
-                    <option value="Radiant">RADIANT</option>
-                </select>
-                <br />
-                <label for="Player5DiscordID">Player 5 Discord ID</label>
-                <input type="text" name="Player5DiscordID" required>
-                <br />
-                <label for="Player5FBLink">Player 5 Fb Link</label>
-                <input type="text" name="Player5FBLink" required>
-              </div>
-                <button id="submitbtnvalo" type="submit" style="cursor: pointer;">Submit</button>
-              </div>
-            </form>
+            <div id="valobtn">
+              <a href="/p/s/reg/valorantreg.html">
+                <button class="btn">
+                  <span class="btn__inner">
+                    <span class="btn__slide"></span>
+                    <span class="btn__content">Register Now</span>
+                  </span>
+                </button>
+              </a>
+            </div>
+            <img src="img/valorantbg.jpg" alt="">
           </div>
 
           <div class="registration2" id="registration-mlbb" data-name="Registration">
-            <div id="loader-2">
-              <div class="loader-spin-2"></div>
-              <p>Your data is processing.<img src="/img/SETLOGOSILVER.png" /></p>
-            </div>
             <p id="registration-title-m">
-              MLBB REGISTRATION
+              MLBB TEAM REGISTRATION
             </p>
-            <form method="POST" name="reg-form-2" action="https://script.google.com/macros/s/AKfycby_yLGqeuo3EmPMADNMOEpiswsoW2KhfdDIxs8qKTGN2fCXMkBmCGsBJ1X3BGCO9dE/exec">
-              <div class="reg-data" id="reg-data">
-                <div id="mlbbinputform-1">
-                  <label for="ml-Email">Email</label>
-                  <input type="email" name="ml-Email" required>
-                  <br />
-                  <label for="ml-Team Name">Team Name</label>
-                  <input type="text" name="ml-Team Name" required>
-                  <br />
-                  <label for="ml-Short Team Name">Short Team Name</label>
-                  <input type="text" name="ml-Short Team Name" required>
-                  <br />
-                  <label for="ml-Team Captain Name">Team Captain/Coach Name</label>
-                  <input type="text" name="ml-Team Captain Name" required>
-                  <br />
-                  <label for="ml-Captain Email">Captain Email</label>
-                  <input type="email" name="ml-Captain Email" required>
-                </div>
-                <div id="mlbbinputform-2">
-                  <br />
-                  <label for="ml-Captain/Coach Number">Captain/Coach Contact Number</label>
-                  <input type="tel" name="ml-Captain/Coach Number" required>
-                  <br />
-                  <label for="ml-Captain Discord ID">Captain/Coach Discord ID</label>
-                  <input type="text" name="ml-Captain Discord ID" required>
-                  <br />
-                  <label for="ml-Captain/Coach FB Link">Team Captain/Coach Fb Link</label>
-                  <input type="text" name="ml-Captain/Coach FB Link" required>
-                  <br />
-                  <label for="payment2">Proof of payment</label>
-                  <input type="file" id="payment2" name="payment2" accept="image/*" placeholder="Proof Of Payment" required>
-                  <br />
-                  <label for="logo2">Your Team Logo</label>
-                  <input type="file" id="logo2" name="logo2" accept="image/*" placeholder="Insert your team logo" required>
-                </div>
-                <button id="nextBtn1mlbb" onclick="mlbbslidebtn()" type="button">&rsaquo;</button>
-                <button id="nextBtn2mlbb" onclick="mlbbslidebtn2()" type="button">&lsaquo;</button>
-                <div id="mlbbinputform-3">
-                  <label for="ml-Player1Name">Player 1 Name</label>
-                  <input type="text" name="ml-Player1Name" required>
-                  <br />
-                  <label for="ml-Player1IGN">Player 1 IGN</label>
-                  <input type="text" name="ml-Player1IGN" required>
-                  <br />
-                  <label for="ml-Player1MLID">Player 1 ML ID</label>
-                  <input type="text" name="ml-Player1MLID" required>
-                  <br />
-                  <label for="ml-Player1Server">Player 1 Server</label>
-                  <input type="text" name="ml-Player1Server" required>
-                  <br />
-                  <label for="ml-Player1DiscordID">Player 1 Discord ID</label>
-                  <input type="text" name="ml-Player1DiscordID" required>
-                  <br />
-                  <label for="ml-Player1FBLink">Player 1 Fb Link</label>
-                  <input type="text" name="ml-Player1FBLink" required>
-              </div>
-              <div id="mlbbinputform-4">
-                <label for="ml-Player2Name">Player 2 Name</label>
-                  <input type="text" name="ml-Player2Name" required>
-                  <br />
-                  <label for="ml-Player2IGN">Player 2 IGN</label>
-                  <input type="text" name="ml-Player2IGN" required>
-                  <br />
-                  <label for="ml-Player2MLID">Player 2 ML ID</label>
-                  <input type="text" name="ml-Player2MLID" required>
-                  <br />
-                  <label for="ml-Player2Server">Player 2 Server</label>
-                  <input type="text" name="ml-Player2Server" required>
-                  <br />
-                  <label for="ml-Player2DiscordID">Player 2 Discord ID</label>
-                  <input type="text" name="ml-Player2DiscordID" required>
-                  <br />
-                  <label for="ml-Player2FBLink">Player 2 Fb Link</label>
-                  <input type="text" name="ml-Player2FBLink" required>
-              </div>
-              <div id="mlbbinputform-5">
-                <label for="ml-Player3Name">Player 3 Name</label>
-                  <input type="text" name="ml-Player3Name" required>
-                  <br />
-                  <label for="ml-Player3IGN">Player 3 IGN</label>
-                  <input type="text" name="ml-Player3IGN" required>
-                  <br />
-                  <label for="ml-Player3MLID">Player 3 ML ID</label>
-                  <input type="text" name="ml-Player3MLID" required>
-                  <br />
-                  <label for="ml-Player3Server">Player 3 Server</label>
-                  <input type="text" name="ml-Player3Server" required>
-                  <br />
-                  <label for="ml-Player3DiscordID">Player 3 Discord ID</label>
-                  <input type="text" name="ml-Player3DiscordID" required>
-                  <br />
-                  <label for="ml-Player3FBLink">Player 3 Fb Link</label>
-                  <input type="text" name="ml-Player3FBLink" required>
-              </div>
-              <div id="mlbbinputform-6">
-                <label for="ml-Player4Name">Player 4 Name</label>
-                  <input type="text" name="ml-Player4Name" required>
-                  <br />
-                  <label for="ml-Player4IGN">Player 4 IGN</label>
-                  <input type="text" name="ml-Player4IGN" required>
-                  <br />
-                  <label for="ml-Player4MLID">Player 4 ML ID</label>
-                  <input type="text" name="ml-Player4MLID" required>
-                  <br />
-                  <label for="ml-Player4Server">Player 4 Server</label>
-                  <input type="text" name="ml-Player4Server" required>
-                  <br />
-                  <label for="ml-Player4DiscordID">Player 4 Discord ID</label>
-                  <input type="text" name="ml-Player4DiscordID" required>
-                  <br />
-                  <label for="ml-Player4FBLink">Player 4 Fb Link</label>
-                  <input type="text" name="ml-Player4FBLink" required>
-              </div>
-              <div id="mlbbinputform-7">
-                <label for="ml-Player5Name">Player 5 Name</label>
-                  <input type="text" name="ml-Player5Name" required>
-                  <br />
-                  <label for="ml-Player5IGN">Player 5 IGN</label>
-                  <input type="text" name="ml-Player5IGN" required>
-                  <br />
-                  <label for="ml-Player5MLID">Player 5 ML ID</label>
-                  <input type="text" name="ml-Player5MLID" required>
-                  <br />
-                  <label for="ml-Player5Server">Player 5 Server</label>
-                  <input type="text" name="ml-Player5Server" required>
-                  <br />
-                  <label for="ml-Player5DiscordID">Player 5 Discord ID</label>
-                  <input type="text" name="ml-Player5DiscordID" required>
-                  <br />
-                  <label for="ml-Player5FBLink">Player 5 Fb Link</label>
-                  <input type="text" name="ml-Player5FBLink" required>
-              </div>
-              
-              <div id="mlbbinputform-8">
-                <label for="ml-Player6Name">Substitue Name</label>
-                  <input type="text" name="ml-Player6Name" required>
-                  <br />
-                  <label for="ml-Player6IGN">Sub IGN</label>
-                  <input type="text" name="ml-Player6IGN" required>
-                  <br />
-                  <label for="ml-Player6MLID">Sub ML ID</label>
-                  <input type="text" name="ml-Player6MLID" required>
-                  <br />
-                  <label for="ml-Player6Server">Sub Server</label>
-                  <input type="text" name="ml-Player6Server" required>
-                  <br />
-                  <label for="ml-Player6DiscordID">Sub Discord ID</label>
-                  <input type="text" name="ml-Player6DiscordID" required>
-                  <br />
-                  <label for="ml-Player6FBLink">Sub Fb Link</label>
-                  <input type="text" name="ml-Player6FBLink" required>
-              </div>
-              
-            </div>
-              <button id="submitbtnmlbb" type="submit" style="cursor: pointer;">Submit</button>
-            </form>
+            <img src="img/mlbbbg.jpg" alt="Mlbb">
+            <div id="mlbbbtn">
+              <a href="/p/s/reg/mlbbreg.html"><button>
+                Register Now
+              </button></a>
             </div>
           </div>
           <div class="product hidden" id="registration" data-name="registration">
