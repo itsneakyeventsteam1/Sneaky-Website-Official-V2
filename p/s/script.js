@@ -93,21 +93,60 @@ document.addEventListener('DOMContentLoaded', () => {
     gameSelector.addEventListener('change', showSelectedGame);
 
 
-    // Function to download the MLBB table data to Excel
-    function downloadTableToExcel(tableID, fileName) {
+    // Function to download table data to Excel with headers
+    function downloadTableToExcelWithHeaders(tableID, fileName, headers) {
       const table = document.getElementById(tableID);
-      const worksheet = XLSX.utils.table_to_sheet(table);
+      const rows = table.querySelectorAll('tr');
+
+      // Create a new workbook and worksheet
       const workbook = XLSX.utils.book_new();
+      const worksheetData = [];
+
+      // Add headers to the worksheet
+      worksheetData.push(headers);
+
+      // Loop through the table rows and add them to the worksheet
+      rows.forEach(row => {
+        const rowData = [];
+        row.querySelectorAll('td, th').forEach(cell => {
+          rowData.push(cell.innerText);
+        });
+        worksheetData.push(rowData);
+      });
+
+      // Convert the data array into a worksheet
+      const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
       XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+      // Export the workbook to Excel file
       XLSX.writeFile(workbook, fileName + ".xlsx");
     }
 
+    // Add event listeners for the download buttons
     document.getElementById('download-excel').addEventListener('click', function () {
-      downloadTableToExcel('table-body', 'MLBB_Data'); // table-body is the ID of the MLBB table
+      // Headers for MLBB table
+      const mlbbHeaders = [
+        'Select', 'Timestamp', 'Email', 'Team Name', 'Short Team Name', 'Captain Name', 'Captain Email', 'Captain Number',
+        'Captain Discord', 'Captain FB Link', 'Player 1 Name', 'Player 1 IGN', 'Player 1 MLID', 'Player 1 Server',
+        'Player 1 Discord ID', 'Player 1 FB Link', 'Player 2 Name', 'Player 2 IGN', 'Player 2 MLID', 'Player 2 Server',
+        'Player 2 Discord ID', 'Player 2 FB Link', 'Player 3 Name', 'Player 3 IGN', 'Player 3 MLID', 'Player 3 Server',
+        'Player 3 Discord ID', 'Player 3 FB Link', 'Player 4 Name', 'Player 4 IGN', 'Player 4 MLID', 'Player 4 Server',
+        'Player 4 Discord ID', 'Player 4 FB Link', 'Player 5 Name', 'Player 5 IGN', 'Player 5 MLID', 'Player 5 Server',
+        'Player 5 Discord ID', 'Player 5 FB Link', 'Sub Name', 'Sub IGN', 'Sub MLID', 'Sub Server', 'Sub Discord ID',
+        'Sub FB Link', 'Payment Image', 'Logo Image'
+      ];
+
+      downloadTableToExcelWithHeaders('table-body', 'MLBB_Data', mlbbHeaders); // table-body is the ID of the MLBB table
     });
 
     document.getElementById('download-valorant-excel').addEventListener('click', function () {
-      downloadTableToExcel('tablev-body', 'Valorant_Data'); // tablev-body is the ID of the Valorant table
+      // Headers for Valorant table
+      const valorantHeaders = [
+        'Select', 'Timestamp', 'Email', 'Team Name', 'Player 1 Name', 'Player 1 Riot ID', 'Player 2 Name', 'Player 2 Riot ID',
+        'Player 3 Name', 'Player 3 Riot ID', 'Logo Image', 'Player Photo', 'Profile Photo', 'FB Page of School', 'Esports FB Page'
+      ];
+
+      downloadTableToExcelWithHeaders('tablev-body', 'Valorant_Data', valorantHeaders); // tablev-body is the ID of the Valorant table
     });
 
 
