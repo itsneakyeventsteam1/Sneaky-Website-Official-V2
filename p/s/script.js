@@ -92,6 +92,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     gameSelector.addEventListener('change', showSelectedGame);
 
+
+    // Function to download the MLBB table data to Excel
+    function downloadTableToExcel(tableID, fileName) {
+      const table = document.getElementById(tableID);
+      const worksheet = XLSX.utils.table_to_sheet(table);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+      XLSX.writeFile(workbook, fileName + ".xlsx");
+    }
+
+    document.getElementById('download-excel').addEventListener('click', function () {
+      downloadTableToExcel('table-body', 'MLBB_Data'); // table-body is the ID of the MLBB table
+    });
+
+    document.getElementById('download-valorant-excel').addEventListener('click', function () {
+      downloadTableToExcel('tablev-body', 'Valorant_Data'); // tablev-body is the ID of the Valorant table
+    });
+
+
     async function displayData() {
       document.getElementById('loading').style.display = 'block';
       try {
