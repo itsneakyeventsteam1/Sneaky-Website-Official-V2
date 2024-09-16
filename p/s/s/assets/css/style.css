@@ -165,3 +165,23 @@ select:hover{
 #vdelete-selected {
   transform: scale(1.05);
 }
+
+.btn-primary {
+  display: flex;
+  cursor: pointer;
+  background-color: #5ee074;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-left: 3px;
+  bottom: 0;
+  transition: 200ms;
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+}
