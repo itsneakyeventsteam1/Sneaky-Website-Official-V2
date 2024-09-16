@@ -93,8 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
     gameSelector.addEventListener('change', showSelectedGame);
 
 
-    // Function to download table data to Excel with headers
-    function downloadTableToExcelWithHeaders(tableID, fileName, headers) {
+    // Function to download table data to Excel with headers and image links
+    function downloadTableToExcelWithHeadersAndImages(tableID, fileName, headers) {
       const table = document.getElementById(tableID);
       const rows = table.querySelectorAll('tr');
 
@@ -109,7 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
       rows.forEach(row => {
         const rowData = [];
         row.querySelectorAll('td, th').forEach(cell => {
-          rowData.push(cell.innerText);
+          const img = cell.querySelector('img'); // Check if the cell contains an image
+          if (img) {
+            // If the cell contains an image, add its 'src' attribute (image URL) to the row data
+            rowData.push(img.src);
+          } else {
+            // Otherwise, just add the text content
+            rowData.push(cell.innerText);
+          }
         });
         worksheetData.push(rowData);
       });
@@ -118,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
       XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
 
-      // Export the workbook to Excel file
+      // Export the workbook to an Excel file
       XLSX.writeFile(workbook, fileName + ".xlsx");
     }
 
@@ -133,21 +140,22 @@ document.addEventListener('DOMContentLoaded', () => {
         'Player 3 Discord ID', 'Player 3 FB Link', 'Player 4 Name', 'Player 4 IGN', 'Player 4 MLID', 'Player 4 Server',
         'Player 4 Discord ID', 'Player 4 FB Link', 'Player 5 Name', 'Player 5 IGN', 'Player 5 MLID', 'Player 5 Server',
         'Player 5 Discord ID', 'Player 5 FB Link', 'Sub Name', 'Sub IGN', 'Sub MLID', 'Sub Server', 'Sub Discord ID',
-        'Sub FB Link', 'Payment Image', 'Logo Image'
+        'Sub FB Link', 'Payment Image URL', 'Logo Image URL'
       ];
 
-      downloadTableToExcelWithHeaders('table-body', 'MLBB_Data', mlbbHeaders); // table-body is the ID of the MLBB table
+      downloadTableToExcelWithHeadersAndImages('table-body', 'MLBB_Data', mlbbHeaders); // table-body is the ID of the MLBB table
     });
 
     document.getElementById('download-valorant-excel').addEventListener('click', function () {
       // Headers for Valorant table
       const valorantHeaders = [
         'Select', 'Timestamp', 'Email', 'Team Name', 'Player 1 Name', 'Player 1 Riot ID', 'Player 2 Name', 'Player 2 Riot ID',
-        'Player 3 Name', 'Player 3 Riot ID', 'Logo Image', 'Player Photo', 'Profile Photo', 'FB Page of School', 'Esports FB Page'
+        'Player 3 Name', 'Player 3 Riot ID', 'Logo Image URL', 'Player Photo URL', 'Profile Photo URL', 'FB Page of School', 'Esports FB Page'
       ];
 
-      downloadTableToExcelWithHeaders('tablev-body', 'Valorant_Data', valorantHeaders); // tablev-body is the ID of the Valorant table
+      downloadTableToExcelWithHeadersAndImages('tablev-body', 'Valorant_Data', valorantHeaders); // tablev-body is the ID of the Valorant table
     });
+
 
 
     async function displayData() {
