@@ -107,7 +107,8 @@ img {
 }
 
 #mlbb-mode,
-#valorant-mode{
+#valorant-mode,
+#hok-mode {
   text-align: center;
   margin: 3%;
   height: 550px;
@@ -123,7 +124,8 @@ img {
 }
 
 #Mlbb-Registration,
-#Valorant-Registration{
+#Valorant-Registration,
+#hok-Registration {
   z-index: -99;
 }
 
@@ -145,7 +147,8 @@ select:hover{
 }
 
 #delete-selected,
-#vdelete-selected {
+#vdelete-selected,
+#hdelete-selected {
   display: flex;
   cursor: pointer;
   background-color: #c82333;
@@ -162,7 +165,8 @@ select:hover{
 }
 
 #delete-selected:hover,
-#vdelete-selected {
+#vdelete-selected:hover,
+#hdelete-selected:hover {
   transform: scale(1.05);
 }
 

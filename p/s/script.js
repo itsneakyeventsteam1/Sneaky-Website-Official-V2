@@ -77,16 +77,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameSelector = document.getElementById('select-game');
     const mlbbMode = document.getElementById('mlbb-mode');
     const valorantMode = document.getElementById('valorant-mode');
+    const hokMode = document.getElementById('hok-mode');
 
     function showSelectedGame() {
       if (gameSelector.value === 'mlbb') {
         mlbbMode.style.display = 'block';
         valorantMode.style.display = 'none';
+        hokMode.style.display = 'none';
         displayData();
       } else if (gameSelector.value === 'valorant') {
         mlbbMode.style.display = 'none';
         valorantMode.style.display = 'block';
+        hokMode.style.display = 'none';
         displayValorantData();
+      } else if (gameSelector.value === 'hok') {
+        mlbbMode.style.display = 'none';
+        valorantMode.style.display = 'none';
+        hokMode.style.display = 'block';
+        displayHOKData();
       }
     }
 
@@ -321,6 +329,82 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // HOK Table Display Function
+    async function displayHOKData() {
+      document.getElementById('loading').style.display = 'block';
+      try {
+        const querySnapshot = await getDocs(collection(db, "hokreg"));
+        const tableBody = document.getElementById('tableh-body');
+
+        if (!querySnapshot.empty) {
+          tableBody.innerHTML = '';
+          querySnapshot.forEach((doc) => {
+            const team = doc.data();
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td><input type="checkbox" class="h-delete-checkbox" data-id="${doc.id}"></td>
+              <td>${team.Timestamp ? convertToPHT(team.Timestamp.toDate()) : 'N/A'}</td>
+              <td>${team.Email}</td>
+              <td>${team.TeamName}</td>
+              <td>${team.SquadID}</td>
+              <td>${team.CaptainID}</td>
+              <td>${team.CaptainFBLink}</td>
+              <td>${team.CaptainName}</td>
+              <td>${team.Player_1_IGN}</td>
+              <td>${team.Player_1_ID}</td>
+              <td>${team.Player_1_FBLink}</td>
+              <td>${team.Player_2_IGN}</td>
+              <td>${team.Player_2_ID}</td>
+              <td>${team.Player_2_FBLink}</td>
+              <td>${team.Player_3_IGN}</td>
+              <td>${team.Player_3_ID}</td>
+              <td>${team.Player_3_FBLink}</td>
+              <td>${team.Player_4_IGN}</td>
+              <td>${team.Player_4_ID}</td>
+              <td>${team.Player_4_FBLink}</td>
+              <td>${team.Player_5_IGN}</td>
+              <td>${team.Player_5_ID}</td>
+              <td>${team.Player_5_FBLink}</td>
+              
+              `;
+              tableBody.appendChild(row);
+          });
+          document.getElementById('loading').style.display = 'none';
+        } else {
+          Swal.fire('No HOK data found in Firestore!', '', 'info');
+          document.getElementById('loading').style.display = 'none';
+        }
+      } catch (error) {
+        handleError('Error fetching HOK data from Firestore:', error);
+        document.getElementById('loading').style.display = 'none';
+      }
+    }
+
+    // Valorant Delete Function
+    async function deleteHOKSelected() {
+      const checkboxes = document.querySelectorAll('.h-delete-checkbox:checked');
+      if (checkboxes.length === 0) {
+        Swal.fire('Please select at least one HOK table row to delete.', '', 'info');
+        return;
+      }
+
+      const promises = [];
+      checkboxes.forEach((checkbox) => {
+        const docId = checkbox.getAttribute('data-id');
+        promises.push(deleteDoc(doc(db, "hokreg", docId)));
+      });
+
+      try {
+        await Promise.all(promises);
+        Swal.fire('Selected HOK rows have been deleted!', '', 'success');
+        displayHOKData();
+      } catch (error) {
+        handleError('Error deleting HOK documents:', error);
+      }
+    }
+
+
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         showSelectedGame(); // Display the initially selected game
@@ -328,6 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add event listener for deleting selected rows
         document.getElementById('delete-selected').addEventListener('click', deleteSelected);
         document.getElementById('vdelete-selected').addEventListener('click', deleteValorantSelected);
+        document.getElementById('hdelete-selected').addEventListener('click', deleteHOKSelected);
 
         // Select All checkbox logic for MLBB
         document.getElementById('select-all').addEventListener('change', (e) => {
@@ -340,6 +425,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Select All checkbox logic for Valorant
         document.getElementById('v-select-all').addEventListener('change', (e) => {
           const checkboxes = document.querySelectorAll('.v-delete-checkbox');
+          checkboxes.forEach(checkbox => {
+            checkbox.checked = e.target.checked;
+          });
+        });
+
+        // Select All checkbox logic for HOK
+        document.getElementById('h-select-all').addEventListener('change', (e) => {
+          const checkboxes = document.querySelectorAll('.h-delete-checkbox');
           checkboxes.forEach(checkbox => {
             checkbox.checked = e.target.checked;
           });

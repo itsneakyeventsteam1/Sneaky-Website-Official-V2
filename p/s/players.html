@@ -31,6 +31,7 @@
       <select name="Select Games" id="select-game">
         <option value="mlbb">Mobile Legends</option>
         <option value="valorant">Valorant</option>
+        <option value="hok">Honor Of Kings</option>
       </select>
     </div>
   </header>
@@ -130,6 +131,47 @@
               </tr>
             </thead>
             <tbody id="tablev-body">
+              <!-- Javascript -->
+            </tbody>
+          </table>
+        </div>
+    </div>
+
+    <div id="hok-mode" style="display: none;">
+      <div id="hok-Registration">
+        <h2>HOK Registration Table</h2>
+        <div class="loading" id="loading" style="display: none;">Loading data...</div>
+        <button id="hdelete-selected">Delete</button>
+        <button id="download-hok-excel" class="btn btn-primary">Download HOK Masterlist</button>
+          <table>
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="h-select-all">Select All</th>
+                <th>Timestamp</th>
+                <th>Email</th>
+                <th>TeamName</th>
+                <th>SquadID</th>
+                <th>CaptainID</th>
+                <th>CaptainFBLink</th>
+                <th>CaptainName</th>
+                <th>Player 1 IGN</th>
+                <th>Player 1 Id</th>
+                <th>Player 1 FB Link</th>
+                <th>Player 2 IGN</th>
+                <th>Player 2 Id</th>
+                <th>Player 2 FB Link</th>
+                <th>Player 3 IGN</th>
+                <th>Player 3 Id</th>
+                <th>Player 3 FB Link</th>
+                <th>Player 4 IGN</th>
+                <th>Player 4 Id</th>
+                <th>Player 4 FB Link</th>
+                <th>Player 5 IGN</th>
+                <th>Player 5 Id</th>
+                <th>Player 5 FB Link</th>
+              </tr>
+            </thead>
+            <tbody id="tableh-body">
               <!-- Javascript -->
             </tbody>
           </table>
