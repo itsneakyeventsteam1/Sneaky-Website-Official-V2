@@ -98,15 +98,23 @@ document.getElementById("item-link-select").addEventListener('change', function 
   var _0x258d9e = this.value;
   var _0x216fc1 = document.getElementById("registration-valo");
   var _0x4fa9b6 = document.getElementById("registration-mlbb");
+  var _0x4fa9b8 = document.getElementById("registration-hok");
   if (_0x258d9e === 'valorant') {
     _0x216fc1.style.display = "block";
     _0x4fa9b6.style.display = "none";
+    _0x4fa9b8.style.display = "none";
   } else if (_0x258d9e === "mlbb") {
     _0x216fc1.style.display = "none";
     _0x4fa9b6.style.display = "block";
+    _0x4fa9b8.style.display = "none";
+  } else if (_0x258d9e === "hok") {
+    _0x216fc1.style.display = "none";
+    _0x4fa9b6.style.display = "none";
+    _0x4fa9b8.style.display = "block";
   } else {
     _0x216fc1.style.display = "none";
     _0x4fa9b6.style.display = "none";
+    _0x4fa9b8.style.display = "none";
   }
 });
 

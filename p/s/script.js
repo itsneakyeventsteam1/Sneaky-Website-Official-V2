@@ -165,6 +165,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    document.getElementById('download-hok-excel').addEventListener('click', function () {
+      // Headers for Valorant table
+      const valorantHeaders = [
+        'Select', 'Timestamp', 'Email', 'Team Name', 'Squad ID', 'Captain ID', 'Captain FB Link', 'Captain Name', 'Player 1 IGN', 'Player 1 ID',
+        'Player 1 FB Link', 'Player 2 IGN', 'Player 2 ID', 'Player 2 FB Link', 'Player 3 IGN', 'Player 3 ID', 'Player 3 FB Link', 
+        'Player 4 IGN', 'Player 4 ID', 'Player 4 FB Link', 'Player 5 IGN', 'Player 5 ID', 'Player 5 FB Link'
+      ];
+
+      downloadTableToExcelWithHeadersAndImages('tableh-body', 'HOK_Data', valorantHeaders); // tablev-body is the ID of the Valorant table
+    });
+
+
 
     async function displayData() {
       document.getElementById('loading').style.display = 'block';

@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@font-face {
+    font-family: 'Valorant';
+    src: url(/p/s/plugins/fonts/Valorant\ Font.ttf);
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: azure;
+    font-family: 'Poppins';
+    background-image: url('/p/s/reg/hok1.jfif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    scroll-behavior: smooth;
+}
+
+label {
+    background-image: linear-gradient(to right, #d16e50, #bb4426);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Valorant';
+    font-size: 1.2rem;
+    font-weight: bolder;
+    z-index: 99;
+}
+
+.formBody {
+    display: flex;
+    border: none;
+    width: 40%;
+    max-width: 40%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    height: 90%;
+    right: 3%;
+    background-color: aliceblue;
+    border-radius: 5px;
+    box-shadow: 2px 2px rgb(184, 58, 58);
+    overflow-y: auto;
+}
+
+form {
+    margin: 3%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%; 
+}
+
+.reg-data-hok {
+    width: 100%; 
+}
+
+input {
+    width: 70%;
+    max-width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 3px;
+    border: none;
+    
+}
+
+
+
+@media (max-width: 768px) {
+    .formBody {
+        width: 90%;
+        max-width: 90%;
+        right: 5%;
+        left: 5%;
+    }
+}
+
+.pageTitle {
+    background-image: linear-gradient(to right, #ff3300, #f3d5d5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    font-family: 'Valorant';
+    writing-mode: vertical-lr;
+    top: 10%;
+    left: 3%;
+    transform: translate(-10%, -3%);
+    font-size: 1.2rem;
+}
+
+.container {
+    position: absolute;
+    height: 1000px; /* Just to ensure there is enough scroll space */
+    left: 0;
+    top: 20%;
+    padding: 20px;
+}
+
+.pageForm-wrapper {
+    position: sticky;
+    top: 10px;
+    transform: translate(-10%);
+}
+
+.pageForm {
+    background-image: linear-gradient(to right, #ac4d30, #d15252);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Valorant', sans-serif;
+    writing-mode: vertical-rl;
+    font-size: 1.2rem;
+    height: fit-content;
+    position: absolute;
+}
+h3 {
+    margin-top: 10%;
+    background-image: linear-gradient(to right, #ffffff, #d67738, #f07443);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Valorant';
+    font-size: 1.2rem;
+}
+
+h5 {
+    background-image: linear-gradient(to right, #d86c51, #c25546);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Valorant';
+    font-size: 1.2rem;
+}
+
+#submitbtnhok {
+    padding: 10px;
+    border: 1px solid #4c2e68;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    float: right;
+    margin-bottom: 3%;
+    border-radius: 5px;
+    font-family: 'Valorant';
+    color: #995c38;
+    font-weight: 600;
+    transition: 200ms;
+}
+
+#submitbtnhok:hover {
+    transform: scale(1.07);
+    color: white;
+    background: linear-gradient(to right, #d33672, #d35443);
+}

@@ -1034,9 +1034,20 @@ div [class ^= "item-link-"]:hover {
   bottom: 0;
 }
 
+#registration-title-h {
+  font-weight: 600;
+  font-size: 1.8rem;
+  position: absolute;
+  margin: 25px;
+  writing-mode: horizontal-tb;
+  top: 5%;
+  font-family: 'MLBB';
+}
+
 @media screen and (max-width: 924px) {
   #registration-title-v,
-  #registration-title-m {
+  #registration-title-m,
+  #registration-title-h {
     font-weight: 600;
     font-size: 1.8rem;
     position: absolute;
@@ -1048,13 +1059,15 @@ div [class ^= "item-link-"]:hover {
   font-family: 'Valorant';
   writing-mode: vertical-rl;
 }
+
 #registration-title-m {
   font-family: 'MLBB';
 }
 
 @media screen and (max-width: 424px) {
   #registration-title-v,
-  #registration-title-m {
+  #registration-title-m,
+  #registration-title-h {
     font-weight: 600;
     font-size: 1.5rem;
     position: absolute;
@@ -1064,7 +1077,8 @@ div [class ^= "item-link-"]:hover {
 
 @media screen and (max-width: 375px) {
   #registration-title-v,
-  #registration-title-m {
+  #registration-title-m,
+  #registration-title-h {
     font-weight: 600;
     font-size: 1.3rem;
     position: absolute;
@@ -1075,7 +1089,8 @@ div [class ^= "item-link-"]:hover {
 
 @media screen and (max-width: 764px) {
   #registration-title-v,
-  #registration-title-m {
+  #registration-title-m,
+  #registration-title-h {
     font-weight: 600;
     font-size: 1.2rem;
     position: absolute;
@@ -1110,6 +1125,9 @@ option[value = 'valorant'] {
 option[value = 'mlbb'] {
   font-family: 'MLBB';
 }
+option[value = 'hok'] {
+  font-family: 'MLBB';
+}
 
 
 /* Mlbb Registration form*/
@@ -1124,9 +1142,18 @@ option[value = 'mlbb'] {
   display: none;
 }
 
+#registration-hok {
+  border: 1px;
+  border-radius: 20px;
+  background-color: var(--secondary-bg-color);
+  position: relative;
+  overflow: hidden;
+  animation: popUp 300ms ease-in-out;
+  display: none;
+}
+
 .registration2 img{
   width: 100%;
-  
 }
 .registration img{
   width: 100%;
@@ -1397,6 +1424,19 @@ option[value = 'mlbb'] {
 }
 
 #registration-mlbb button{
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  width: fit-content;
+  border-radius: 3px; 
+  position: absolute;
+  padding: 20px 30px;
+  top: 50%;
+  right: 15%;
+  transform: translate(-50%, 0, 0, -15%);
+  font-family: 'MLBB';
+}
+
+#registration-hok button{
   background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
                 radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
   width: fit-content;
