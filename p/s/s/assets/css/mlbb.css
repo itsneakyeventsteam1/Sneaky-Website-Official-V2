@@ -13,7 +13,7 @@ body {
     background-color: azure;
     font-family: 'Poppins';
     background-repeat: no-repeat;
-    background-size: cover;
+    /*background-size: cover;*/
     scroll-behavior: smooth;
     transform: none;
 }
