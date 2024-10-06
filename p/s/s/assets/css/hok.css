@@ -14,7 +14,7 @@ body {
     font-family: 'Poppins';
     background-image: url('/p/s/reg/hok1.jfif');
     background-repeat: no-repeat;
-    background-size: cover;
+    /*background-size: cover;*/
     scroll-behavior: smooth;
 }
 
