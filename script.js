@@ -1,7 +1,7 @@
 document.addEventListener('keydown', function (_0x2ded5e) {
   if (_0x2ded5e.key === 'F12') {
     var _0xcbe9bd = prompt(" ⚠️ Please enter the password to continue to the Dev Tools:");
-    if (_0xcbe9bd !== "sneakywebjvjm") {
+    if (_0xcbe9bd !== "sneakywebit") {
       _0x2ded5e.preventDefault();
       alert(" ❌ Incorrect password!");
     }
@@ -384,3 +384,5 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
+
+

@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Headers for Valorant table
       const valorantHeaders = [
         'Select', 'Timestamp', 'Email', 'Team Name', 'Player 1 Name', 'Player 1 Riot ID', 'Player 2 Name', 'Player 2 Riot ID',
-        'Player 3 Name', 'Player 3 Riot ID', 'Logo Image URL', 'Player Photo URL', 'Profile Photo URL', 'FB Page of School', 'Esports FB Page'
+        'Player 3 Name', 'Player 3 Riot ID', 'Player 4 Name', 'Player 4 Riot ID', 'Player 5 Name', 'Player 5 Riot ID', 'Logo Image URL', 'Player Photo URL', 'Profile Photo URL', 'Esports FB Page'
       ];
 
       downloadTableToExcelWithHeadersAndImages('tablev-body', 'Valorant_Data', valorantHeaders); // tablev-body is the ID of the Valorant table
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function displayValorantData() {
       document.getElementById('loading').style.display = 'block';
       try {
-        const querySnapshot = await getDocs(collection(db, "valorant"));
+        const querySnapshot = await getDocs(collection(db, "valorant5"));
         const tableBody = document.getElementById('tablev-body');
 
         if (!querySnapshot.empty) {
@@ -297,10 +297,13 @@ document.addEventListener('DOMContentLoaded', () => {
               <td>${team.Player_2_RiotId}</td>
               <td>${team.Player_3_Name}</td>
               <td>${team.Player_3_RiotId}</td>
+              <td>${team.Player_4_Name}</td>
+              <td>${team.Player_4_RiotId}</td>
+              <td>${team.Player_5_Name}</td>
+              <td>${team.Player_5_RiotId}</td>
               <td><img src="${team.logoUrl}" alt="Logo Image" width="100"></td>
               <td><img src="${team.photoplayerUrl}" alt="Player Photo" width="100"></td>
               <td><img src="${team.profileUrl}" alt="Player Photo" width="100"></td>
-              <td><a href="${team.Fb_Page_of_School}">${team.Fb_Page_of_School}</a></td>
               <td><a href="${team.fbPageEsportUrl}">${team.fbPageEsportUrl}</a></td>
               
             `;
@@ -328,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const promises = [];
       checkboxes.forEach((checkbox) => {
         const docId = checkbox.getAttribute('data-id');
-        promises.push(deleteDoc(doc(db, "valorant", docId)));
+        promises.push(deleteDoc(doc(db, "valorant5", docId)));
       });
 
       try {

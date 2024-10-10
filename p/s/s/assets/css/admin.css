@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body {
+    font-family: 'Poppins';
+}
+
+canvas {
+    max-width: 600px;
+}
+.content {
+    display: none; /* Initially hide all content */
+}
+.active {
+    display: block; /* Show only active content */
+}
+.toggle-button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.content1{
+    border: 2px solid red;
+    width: 90%;
+    border-radius: 5px;
+    background: rgba(205, 204, 212, 0.836);
+}
+
+main button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #fcf8ff;
+    border-radius: 3px;
+    border: 1px solid #413268;
+}
+
+
+#registration-details {
+    position: relative;
+    margin-left: 5%;
+}
+
+#registration-details-preview {
+    margin-top: 20px;
+}
+#registration-details-preview h2 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+#registration-details-preview p {
+    font-size: 1.4rem;
+    margin: 5px 0;
+    white-space: pre-wrap; /* This allows the text to display line breaks */
+}
+textarea {
+    font-family: 'Poppins';
+    width: 90%;
+    height: 100px;
+    resize: vertical;
+    background: rgb(239, 238, 247);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(12, 12, 90, 0.3);
+}
+#registration-details-input {
+    font-family: 'Poppins';
+    width: 60%;
+    padding: 10px;
+    margin-top: 5%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(12, 12, 90, 0.3);
+    margin-bottom: 1%;
+    background: rgb(239, 238, 247);
+}
+
+
+
+#registration-container {
+    margin-top: 20px;
+    background: var(--secondary-bg-color);
+    border-radius: 10px;
+    width: 90%;
+    height: 500px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  #registration-details-c {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    height: 440px;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background: var(--bg-color);
+    border-radius: 8px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  :root {
+    --bg-color: #14161b;
+    --secondary-bg-color: #1c1f25;
+    --bg-gradient: linear-gradient(133deg, #010101 0%, #131410 54%, #1d1d03 100%);
+    --background-color: #0f1923;
+  }
+  #registration-details-c a {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--main-color);
+  }
+  #registration-details-c p {
+    font-size: 1.4rem;
+    color: white;
+    font-family: 'Poppins';
+  }
+  #registration-details-c h1,
+  #registration-details-c h2 {
+    margin-top: 20px;
+    font-size: 1.8rem;
+    font-family: 'AbsoluteZero';
+  }
+
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0rem;
+    margin: 3%;
+}
+
+.image-grid img {
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 200ms ease;
+    box-shadow: 2px 2px 5px rgba(12, 12, 90, 0.3);
+}
+
+.image-grid img.selected {
+    border-color: red;
+    filter: opacity(0.5);
+}
+
+#image-delete-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+.usage {
+    width: 15%;
+    position: absolute;
+    right: 0;
+    top: 8%;
+    z-index: -1;
+}
+
+#image-manager {
+    border: 2px solid red;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+    background: rgb(239, 238, 247);
+}
+
+button {
+    transition: all 200ms ease;
+    font-weight: 600;
+}
+button:hover {
+    color: white;
+    transform: scale(1.03);
+    background-color: #ccc;
+}
+
+.maincontent {
+    margin: 3%;
+}
+.maincontent h2, h1{
+    margin-bottom: 3px;
+    text-align: center;
+    color: #52466e;
+}

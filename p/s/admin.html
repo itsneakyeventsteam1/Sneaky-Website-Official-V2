@@ -11,8 +11,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-32x32.png">
   <link rel="manifest" href="/img/favicon/site.webmanifest">
   <link rel="stylesheet" href="/p/s/s/assets/css/style.css">
+  <link rel="stylesheet" href="/p/s/s/assets/css/admin.css">
   <link rel="stylesheet" href="/p/s/s/assets/css/drawer.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!--  Plugins  -->
 
@@ -26,13 +28,100 @@
           <a href="account.html">Account Management</a>
         </nav>
     </header>
-    <div>
-      <h3>This Page was Under Maintenance</h3>
-      <span>You can still proceed to the games page.</span>
-    </div>
+
+
+    <main>
+
+      <div>
+        <button class="toggle-button" id="showContent1">Show Registration Details</button>
+        <button class="toggle-button" id="showContent2">Show Image Manager</button>
+      </div>
+
+      <div class="maincontent">
+        <div class="content1 content"> <!-- Initially active content -->
+          <div id="registration-details">
+              <h2>Registration Details</h2>
+              <input type="text" id="registration-details-input" placeholder="Title">
+              <textarea id="registration-details-input-text" placeholder="Content" rows="5"></textarea>
+              <button id="save-registration-btn">Save Registration Details</button>
+              <p id="save-status"></p>
+          </div>
+  
+          <div id="registration-details-preview">
+            <h2>Preview</h2>
+            <div id="registration-container">
+              <div id="registration-details-c">
+                <p id="registration-details-preview-title"></p>
+                <p id="registration-details-preview-content"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      <div class="content2 content">
+          <div id="image-manager">
+              <h2>Image Manager</h2>
+              <input type="file" id="image-input" accept="image/*" multiple>
+              <button id="image-upload-btn">Upload</button>
+              <button id="image-delete-btn" disabled title="Must select at least one image">Delete Selected</button>
+              <p id="upload-status"></p>
+              <div id="image-list" class="image-grid"></div>
+          </div>
+      </div>
+      </div>
+
+      <div class="usage">
+        <canvas id="storageChart"></canvas>
+      </div>
+    </main>
+
+
+    
+    
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="/p/s/admin.js"></script>
 <script type="module" src="/p/s/script.js"></script>
 <script src="/p/s/drawer.js"></script>
+
+<script>
+  const content1 = document.querySelector('.content1');
+  const content2 = document.querySelector('.content2');
+  const content3 = document.querySelector('.content3');
+  const showContent1Button = document.getElementById('showContent1');
+  const showContent2Button = document.getElementById('showContent2');
+  const showContent3Button = document.getElementById('usage');
+
+  showContent1Button.addEventListener('click', () => {
+    if(!content1.classList.contains('active')) {
+        content1.classList.add('active');
+        content2.classList.remove('active');
+      } else {
+        content1.classList.remove('active');
+        content2.classList.remove('active');
+      }
+  });
+
+  showContent2Button.addEventListener('click', () => {
+    if(!content2.classList.contains('active')) {
+        content2.classList.add('active');
+        content1.classList.remove('active');
+      } else {
+        content1.classList.remove('active');
+        content2.classList.remove('active');
+      }
+  });
+
+  if (showContent3Button) {
+    showContent3Button.addEventListener('click', () => {
+      if(!content3.classList.contains('active')) {
+        content3.classList.add('active');
+      } else {
+        content3.classList.remove('active');
+      }
+  });
+  }
+
+</script>
 </html>

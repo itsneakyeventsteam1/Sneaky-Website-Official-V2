@@ -1670,15 +1670,18 @@ fieldset {
   border-radius: 8px;
   overflow: scroll;
   overflow-x: hidden;
+  white-space: pre-wrap;
 }
 #registration-details a {
   display: flex;
   flex-wrap: wrap;
+  
   color: var(--main-color);
 }
 #registration-details p {
   font-size: 1.4rem;
   font-family: 'Poppins';
+  white-space: pre-wrap;
 }
 #registration-details h1,
 #registration-details h2 {

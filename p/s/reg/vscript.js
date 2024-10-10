@@ -54,13 +54,17 @@
         Player_2_RiotId: formData.get('vl-Player2RiotId'),
         Player_3_Name: formData.get('vl-Player3Name'),
         Player_3_RiotId: formData.get('vl-Player3RiotId'),
-        Fb_Page_of_School: formData.get('vl-fbpageofschool'),
+        Player_4_Name: formData.get('vl-Player4Name'),
+        Player_4_RiotId: formData.get('vl-Player4RiotId'),
+        Player_5_Name: formData.get('vl-Player5Name'),
+        Player_5_RiotId: formData.get('vl-Player5RiotId'),
+        // Fb_Page_of_School: formData.get('vl-fbpageofschool'),
         fbPageEsportUrl: formData.get('vl-fbPageEsportUrl'),
         Timestamp: new Date(),
       };
 
       // Save to Firestore
-      await setDoc(doc(db, "valorant", teamName), teamData);
+      await setDoc(doc(db, "valorant5", teamName), teamData);
 
       // SweetAlert2 success message
       await Swal.fire({
