@@ -21,10 +21,11 @@ canvas {
 }
 
 .content1{
-    border: 2px solid red;
     width: 90%;
     border-radius: 5px;
     background: rgba(205, 204, 212, 0.836);
+    box-shadow: 2px 2px 5px rgba(12, 12, 90, 0.3),
+    -2px -2px 5px rgba(12, 12, 90, 0.3);
 }
 
 main button {
@@ -112,7 +113,7 @@ textarea {
     color: var(--main-color);
   }
   #registration-details-c p {
-    font-size: 1.4rem;
+    font-size: 0.9rem;
     color: white;
     font-family: 'Poppins';
   }
@@ -169,7 +170,8 @@ textarea {
     justify-content: center;
     align-items: center;
     text-align: center;
-    box-shadow: 2px 2px 5px rgba(12, 12, 90, 0.3);
+    box-shadow: 2px 2px 5px rgba(12, 12, 90, 0.3),
+    -2px -2px 5px rgba(12, 12, 90, 0.3);
     border-radius: 5px;
     background: rgb(239, 238, 247);
 }
