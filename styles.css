@@ -1670,7 +1670,7 @@ fieldset {
   border-radius: 8px;
   overflow: scroll;
   overflow-x: hidden;
-  white-space: pre-wrap;
+  
 }
 #registration-details a {
   display: flex;
@@ -1686,7 +1686,7 @@ fieldset {
 #registration-details h1,
 #registration-details h2 {
   margin-top: 20px;
-  font-size: 1.8rem;
+  font-size: 2.3rem;
   font-family: 'AbsoluteZero';
 }
 
