@@ -1,9 +1,7 @@
-// Import Firebase SDK modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
 import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCrLNQ7FwfXWpsFRdRqwjvBr_5CHKpk4P4",
   authDomain: "registration-sneaky.firebaseapp.com",
@@ -14,32 +12,47 @@ const firebaseConfig = {
   measurementId: "G-D7S6B8GT6S"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Firebase Storage: Display images
 const storage = getStorage(app);
 const listRef = ref(storage, 'events_pictures');
 
 listAll(listRef).then((res) => {
-    res.items.forEach((itemRef) => {
-        getDownloadURL(itemRef).then((url) => {
-            const img = document.createElement('img');
-            img.classList.add('swiper-slide');
-            img.src = url;
-            const swiperWrapper = document.querySelector('.swiper-wrapper');
-            if (swiperWrapper) {
-                swiperWrapper.appendChild(img);
-            } else {
-                console.error('Element .swiper-wrapper not found');
-            }
+    const swiperWrapper = document.querySelector('.swiper-wrapper');
+    const images = [];
+
+    const fetchPromises = res.items.map((itemRef) => {
+        return getDownloadURL(itemRef).then((url) => {
+            images.push(url);
         });
+    });
+
+    Promise.all(fetchPromises).then(() => {
+        const imgTags = swiperWrapper.getElementsByTagName('img');
+
+        for (let i = 0; i < imgTags.length; i++) {
+            if (i < images.length) {
+                imgTags[i].src = images[i];
+                imgTags[i].classList.add('swiper-slide');
+            } else {
+                imgTags[i].remove();
+            }
+        }
+
+        const allImgTags = swiperWrapper.getElementsByTagName('img');
+        const imageCount = images.length;
+
+        for (let i = 0; i < allImgTags.length; i++) {
+            if (!allImgTags[i].src && imageCount > 0) {
+                allImgTags[i].src = images[i % imageCount];
+            }
+        }
+
     });
 }).catch((error) => {
     console.error("Error fetching images: ", error);
 });
 
-// Display registration text and title
 const db = getFirestore(app);
 const registrationText = document.getElementById('registration-details');
 
@@ -48,8 +61,6 @@ if (registrationText) {
 
     getDoc(registrationTextRef).then((docSnap) => {
         if (docSnap.exists()) {
-
-            // Add the title as <h1>
             const h1 = document.createElement('h1');
             h1.innerHTML = docSnap.data().Title || '';
             registrationText.appendChild(h1);
