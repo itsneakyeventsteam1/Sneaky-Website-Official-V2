@@ -106,9 +106,22 @@
     transform: scale(0.9);
   }
     }
+
 </style>
 <body oncontextmenu="return false">
 
+  <div class="spinner-wrapper" style="display: none;">
+    <h3>Loading assets please wait</h3>
+    </br>
+    <div class="spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
   <!-- chatbot start -->
   <button id="openChatBtn">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-right-dots" viewBox="0 0 16 16">
@@ -166,6 +179,9 @@
     <div id="loader-3">
       <p>Your data is processing.<img src="/img/SETLOGOSILVER.png" /><span class="loader-spin-3"></span></p>
     </div>
+
+
+    
       <!-- Header Design end -->
   
 
@@ -392,13 +408,17 @@
 
         <div class="product hidden" id="merchandise" data-name="merchandise">
           <div class="swiper-container">
-            <div class="swiper-wrapper">
-              <img class="swiper-slide" src="/img/MERCHANDISE/BALLER.png" />
-              <img class="swiper-slide" src="/img/MERCHANDISE/TOTE.png" />
-              <img class="swiper-slide" src="/img/MERCHANDISE/mug1.png" />
-              <img class="swiper-slide" src="/img/MERCHANDISE/mug2.png" />
-              <img class="swiper-slide" src="/img/MERCHANDISE/shirt1.png" />
-              <img class="swiper-slide" src="/img/MERCHANDISE/shirt2.png" />
+            <div class="merchandise swiper-wrapper">
+              <img class="swiper-slide" src="" />
+              <img class="swiper-slide" src="" />
+              <img class="swiper-slide" src="" />
+              <img class="swiper-slide" src="" />
+              <img class="swiper-slide" src="" />
+              <img class="swiper-slide" src="" />
+              <img class="swiper-slide" src="" />
+              <img class="swiper-slide" src="" />
+              <img class="swiper-slide" src="" />
+              <img class="swiper-slide" src="" />
             </div>
           </div>
           <div class="shadow3d"></div>
@@ -694,10 +714,6 @@
       </div>
     </section>
 
-<!-- Start of sneakyeventsteam Zendesk Widget script -->
-<!--<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=efbf6519-69a9-4e54-b75b-a9e05501e9ce"> </script>-->
-<!-- End of sneakyeventsteam Zendesk Widget script -->
-    <!--BackUp Contact Us end -->
 
     <!--Footer start-->
     <div class="footer-icon">
@@ -738,5 +754,12 @@
 <script src="youtube.js"></script>
 <script src="imagesheetupload.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script>
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    if (!img.src || img.src.trim() === '') {
+      img.remove();
+    }
+  });
+</script>
 </html>

@@ -17,9 +17,16 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 const db = getFirestore(app);
 
+const notyf = new Notyf({
+  position: { x: 'left', y: 'top' }
+});
+
 const imageList = document.getElementById("image-list");
+const imageListMerch = document.getElementById("image-list-merch");
 const imageInput = document.getElementById("image-input");
+const imageInputMerch = document.getElementById("image-input-merch");
 const imageUploadBtn = document.getElementById("image-upload-btn");
+const imageUploadMerchBtn = document.getElementById("image-upload-merch-btn");
 const imageDeleteBtn = document.getElementById("image-delete-btn");
 const uploadStatus = document.getElementById("upload-status");
 
@@ -28,7 +35,9 @@ let selectedImages = [];
 // Function to load images from Firebase Storage
 function loadImages() {
   const listRef = ref(storage, 'events_pictures');
+  const listRefMerch = ref(storage, 'merch_pictures');
 
+  // Load event images
   listAll(listRef).then((res) => {
     res.items.forEach((itemRef) => {
       getDownloadURL(itemRef).then((url) => {
@@ -39,48 +48,74 @@ function loadImages() {
         imageList.appendChild(img);
 
         img.addEventListener("click", () => {
-          if (img.classList.contains('selected')) {
-            img.classList.remove('selected');
-            selectedImages = selectedImages.filter(path => path !== img.dataset.storagePath);
-          } else {
-            img.classList.add('selected');
-            selectedImages.push(img.dataset.storagePath);
-          }
-
-          updateDeleteButtonState();
+          toggleImageSelection(img);
         });
       });
     });
   }).catch((error) => {
     console.error("Error loading images:", error);
   });
+
+  // Load merch images
+  listAll(listRefMerch).then((res) => {
+    res.items.forEach((itemRef) => {
+      getDownloadURL(itemRef).then((url) => {
+        const img = document.createElement("img");
+        img.src = url;
+        img.alt = itemRef.name;
+        img.dataset.storagePath = itemRef.fullPath;
+        imageListMerch.appendChild(img);
+
+        img.addEventListener("click", () => {
+          toggleImageSelection(img);
+        });
+      });
+    });
+  }).catch((error) => {
+    console.error("Error loading merch images:", error);
+  });
+}
+
+// Helper function to toggle image selection
+function toggleImageSelection(img) {
+  if (img.classList.contains('selected')) {
+    img.classList.remove('selected');
+    selectedImages = selectedImages.filter(path => path !== img.dataset.storagePath);
+  } else {
+    img.classList.add('selected');
+    selectedImages.push(img.dataset.storagePath);
+  }
+  updateDeleteButtonState();
 }
 
 // Load images when the page loads
 window.addEventListener("load", loadImages);
 
-document.addEventListener("DOMContentLoaded", () => {
-  calculateStorageUsage();
-})
-
-// Image upload handler
+// Image upload handler for events
 imageUploadBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  const files = imageInput.files;
+  uploadImages(imageInput.files, 'events_pictures', imageList);
+});
+
+// Image upload handler for merch
+imageUploadMerchBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  uploadImages(imageInputMerch.files, 'merch_pictures', imageListMerch);
+});
+
+// Upload images to Firebase Storage
+function uploadImages(files, folderPath, imageListElement) {
   if (!files.length) {
-    alert("Please select an image to upload");
+    notyf.error("Please select an image to upload");
     return;
   }
 
   uploadStatus.textContent = "Image is uploading...";
-  imageUploadBtn.disabled = true;
-
   const promises = [];
 
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
-
-    const storageRef = ref(storage, `events_pictures/${file.name}`);
+    const storageRef = ref(storage, `${folderPath}/${file.name}`);
 
     const uploadTask = uploadBytes(storageRef, file).then((snapshot) => {
       return getDownloadURL(snapshot.ref);
@@ -88,19 +123,11 @@ imageUploadBtn.addEventListener("click", (e) => {
       const img = document.createElement("img");
       img.src = downloadURL;
       img.alt = file.name;
-      img.dataset.storagePath = `events_pictures/${file.name}`;
-      imageList.appendChild(img);
+      img.dataset.storagePath = `${folderPath}/${file.name}`;
+      imageListElement.appendChild(img);
 
       img.addEventListener("click", () => {
-        if (img.classList.contains('selected')) {
-          img.classList.remove('selected');
-          selectedImages = selectedImages.filter(path => path !== img.dataset.storagePath);
-        } else {
-          img.classList.add('selected');
-          selectedImages.push(img.dataset.storagePath);
-        }
-
-        updateDeleteButtonState();
+        toggleImageSelection(img);
       });
     }).catch((error) => {
       console.error("Error uploading image:", error);
@@ -110,24 +137,23 @@ imageUploadBtn.addEventListener("click", (e) => {
   }
 
   Promise.all(promises).then(() => {
-    uploadStatus.textContent = "Images uploaded successfully";
-    imageUploadBtn.disabled = false;
+    notyf.success('Images uploaded successfully');
+    uploadStatus.textContent = "";
   }).catch((error) => {
+    notyf.error('Error uploading images');
     uploadStatus.textContent = "Image upload failed";
-    imageUploadBtn.disabled = false;
     console.error(error);
   });
-});
+}
 
-// Image deletion handler
+// Delete selected images from Firebase Storage
 imageDeleteBtn.addEventListener("click", () => {
+  const deleteCount = selectedImages.length;
   const deletePromises = selectedImages.map((storagePath) => {
     const storageRef = ref(storage, storagePath);
     return deleteObject(storageRef).then(() => {
       const img = document.querySelector(`img[data-storage-path='${storagePath}']`);
-      if (img) {
-        img.remove();
-      }
+      if (img) img.remove();
     }).catch((error) => {
       console.error("Error deleting image:", error);
     });
@@ -136,14 +162,16 @@ imageDeleteBtn.addEventListener("click", () => {
   Promise.all(deletePromises).then(() => {
     selectedImages = [];
     updateDeleteButtonState();
-    uploadStatus.textContent = "Selected images deleted successfully";
+    notyf.success(`${deleteCount} images deleted successfully`);
+    uploadStatus.textContent = `${deleteCount} images deleted successfully`;
   }).catch((error) => {
+    notyf.error('Error deleting images');
     uploadStatus.textContent = "Error deleting images";
-    console.error("Error deleting images:", error);
+    console.error(error);
   });
 });
 
-// Function to update the delete button state
+// Update the delete button state
 function updateDeleteButtonState() {
   if (selectedImages.length === 0) {
     imageDeleteBtn.disabled = true;
@@ -154,35 +182,21 @@ function updateDeleteButtonState() {
   }
 }
 
-// Firestore Registration Details
-
-// Get references to DOM elements
+// Firestore Registration Details Handling
 const titleInput = document.getElementById('registration-details-input');
 const contentInput = document.getElementById('registration-details-input-text');
 const saveRegistrationBtn = document.getElementById('save-registration-btn');
 const saveStatus = document.getElementById('save-status');
 
-// Get references for the preview elements
-const titlePreview = document.getElementById('registration-details-preview-title');
-const contentPreview = document.getElementById('registration-details-preview-content');
-
-// Function to convert plain text with links to HTML
-function formatContentWithLinks(content) {
-  const urlRegex = /(https?:\/\/[^\s]+)/g; // Regex to find URLs
-  return content.replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
-}
-
-// Function to retrieve and display Firestore data
+// Display Firestore registration details
 async function loadRegistrationDetails() {
   const docRef = doc(db, "registration-details", "registration-text");
   try {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const data = docSnap.data();
-
-      // Display the title and content in preview
-      titlePreview.textContent = data.Title || 'No Title';
-      contentPreview.innerHTML = formatContentWithLinks(data.Text || 'No Content');
+      document.getElementById('registration-details-preview-title').textContent = data.Title || 'No Title';
+      document.getElementById('registration-details-preview-content').innerHTML = formatContentWithLinks(data.Text || 'No Content');
     } else {
       console.log("No such document!");
     }
@@ -191,8 +205,11 @@ async function loadRegistrationDetails() {
   }
 }
 
-// Load registration details when the page loads
-loadRegistrationDetails();
+// Format content with links
+function formatContentWithLinks(content) {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  return content.replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
+}
 
 // Save registration details to Firestore
 saveRegistrationBtn.addEventListener('click', async () => {
@@ -206,15 +223,19 @@ saveRegistrationBtn.addEventListener('click', async () => {
         Text: content
       });
       saveStatus.textContent = "Registration details saved successfully!";
-      loadRegistrationDetails(); // Reload the data after saving
+      loadRegistrationDetails();
     } catch (error) {
       console.error("Error saving registration details:", error);
       saveStatus.textContent = "Error saving registration details.";
     }
   } else {
+    
     saveStatus.textContent = "Please fill in both fields.";
   }
 });
+
+// Load registration details on page load
+loadRegistrationDetails();
 
 
 const storageChartCanvas = document.getElementById('storageChart');
@@ -242,7 +263,7 @@ async function calculateStorageUsage() {
 function createStorageChart(usedStorage, remainingStorage) {
   const ctx = storageChartCanvas.getContext('2d');
   const storageChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
       labels: ['Used Storage', 'Remaining Storage'],
       datasets: [{
@@ -259,9 +280,62 @@ function createStorageChart(usedStorage, remainingStorage) {
         },
         title: {
           display: true,
-          text: 'Firebase Storage Usage'
+          text: 'Storage Usage'
         }
       }
     }
   });
 }
+
+
+
+
+const saveSwitchState = async (switchId, isEnabled) => {
+  const switchStatus = isEnabled ? "enabled" : "disabled";
+  try {
+      await setDoc(doc(db, 'reg_switches', switchId), { switchStatus });
+      console.log(`${switchId} saved as ${switchStatus}`);
+  } catch (error) {
+      console.error("Error saving switch state: ", error);
+  }
+};
+
+const loadSwitchState = async (switchId) => {
+  try {
+      const docRef = doc(db, 'reg_switches', switchId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+          const switchStatus = docSnap.data().switchStatus;
+          const switchInput = document.getElementById(`${switchId}Switch`);
+          switchInput.checked = switchStatus === "enabled";
+
+          const associatedCheckboxId = switchId + 'Checkbox';
+          const associatedCheckbox = document.getElementById(associatedCheckboxId);
+          associatedCheckbox.disabled = !switchInput.checked;
+          associatedCheckbox.checked = switchInput.checked;
+      }
+  } catch (error) {
+      console.error("Error loading switch state: ", error);
+  }
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
+  // Load the state for each switch on page load
+  const switchIds = ['valorant', 'mlbb', 'hok'];
+  for (const switchId of switchIds) {
+      await loadSwitchState(switchId);
+  }
+
+  document.querySelectorAll('.switch input').forEach(switchInput => {
+      switchInput.addEventListener('change', () => {
+          const associatedCheckboxId = switchInput.id.replace('Switch', 'Checkbox');
+          const associatedCheckbox = document.getElementById(associatedCheckboxId);
+          associatedCheckbox.disabled = !switchInput.checked;
+          associatedCheckbox.checked = switchInput.checked;
+
+          const switchId = switchInput.id.replace('Switch', '');
+          saveSwitchState(switchId, switchInput.checked);
+      });
+  });
+});

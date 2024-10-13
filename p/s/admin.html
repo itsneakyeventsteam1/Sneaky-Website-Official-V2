@@ -16,10 +16,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
   <!--  Plugins  -->
 
 </head>
 <body>
+
+
+  
     <header >
         <button class="menu-btn" id="menuBtn">&#9776;</button>
         <nav class="drawer" id="drawer">
@@ -29,17 +37,19 @@
         </nav>
     </header>
 
-
+    
     <main>
 
       <div>
         <button class="toggle-button" id="showContent1">Show Registration Details</button>
         <button class="toggle-button" id="showContent2">Show Image Manager</button>
+        <button class="toggle-button" id="showContent3">Open Registration Manager</button>
       </div>
 
       <div class="maincontent">
         <div class="content1 content"> <!-- Initially active content -->
           <div id="registration-details">
+            <button type="button" id="details-close-btn" class="btn-close btn-close-black" aria-label="Close"></button>
               <h2>Registration Details</h2>
               <input type="text" id="registration-details-input" placeholder="Title">
               <textarea id="registration-details-input-text" placeholder="Content" rows="5"></textarea>
@@ -48,6 +58,7 @@
           </div>
   
           <div id="registration-details-preview">
+            
             <h2>Preview</h2>
             <div id="registration-container">
               <div id="registration-details-c">
@@ -58,20 +69,74 @@
           </div>
         </div>
   
-      <div class="content2 content">
-          <div id="image-manager">
-              <h2>Image Manager</h2>
-              <h5>10 images was recommended</h5>
-              <input type="file" id="image-input" accept="image/*" multiple>
-              <button id="image-upload-btn">Upload</button>
-              <button id="image-delete-btn" disabled title="Must select at least one image">Delete Selected</button>
-              <p id="upload-status"></p>
-              <div id="image-list" class="image-grid"></div>
+        <div class="content2 content">
+            <div id="image-manager">
+              <button type="button" id="events-close-btn" class="btn-close btn-close-black" aria-label="Close"></button>
+                <h2>Image Manager</h2>
+                <h5>10 images was recommended</h5>
+                
+                <button id="image-delete-btn" disabled title="Must select at least one image">Delete Selected</button>
+                <section class="events-section">
+                  <p id="upload-status"></p>
+                  <h4>Events</h4>
+                  <input type="file" id="image-input" accept="image/*" multiple>
+                  <button id="image-upload-btn">Upload</button>
+                  <div id="image-list" class="image-grid"></div>
+                </section>
+
+                <section class="merchandise-section">
+                  <h4>Merchandise</h4>
+                  <input type="file" id="image-input-merch" accept="image/*" multiple>
+                  <button id="image-upload-merch-btn">Upload</button>
+                  <div id="image-list-merch" class="image-grid-merch"></div>
+                </section>
+            </div>
+        </div>
+
+        <div class="content3 content"> <!-- Initially active content -->
+          <div id="registration-manager">
+            <button type="button" id="regswitch-close-btn" class="btn-close btn-close-black" aria-label="Close"></button>
+            <h4>Enable Games for Registration</h4>
+            <div class="game-checkbox">
+              <label>
+                  <div class="switch">
+                      <input type="checkbox" id="valorantSwitch">
+                      <span class="slider"></span>
+                  </div>
+                  Valorant
+              </label>
+              <input type="checkbox" id="valorantCheckbox" disabled>
           </div>
-      </div>
+          
+          <div class="game-checkbox">
+              <label>
+                  <div class="switch">
+                      <input type="checkbox" id="mlbbSwitch">
+                      <span class="slider"></span>
+                  </div>
+                  Mobile Legends
+              </label>
+              <input type="checkbox" id="mlbbCheckbox" disabled>
+          </div>
+          
+          <div class="game-checkbox">
+              <label>
+                  <div class="switch">
+                      <input type="checkbox" id="hokSwitch">
+                      <span class="slider"></span>
+                  </div>
+                  Honor Of Kings
+              </label>
+              <input type="checkbox" id="hokCheckbox" disabled>
+          </div>
+      
+         
+          </div>
+        </div>
+
       </div>
 
-      <div class="usage">
+      <div class="usage active">
         <canvas id="storageChart"></canvas>
       </div>
     </main>
@@ -90,9 +155,12 @@
   const content1 = document.querySelector('.content1');
   const content2 = document.querySelector('.content2');
   const content3 = document.querySelector('.content3');
+  const eventBtn = document.querySelector('#events-close-btn');
+  const regBtn = document.querySelector('#details-close-btn');
+  const regSwitchBtn = document.querySelector('#regswitch-close-btn');
   const showContent1Button = document.getElementById('showContent1');
   const showContent2Button = document.getElementById('showContent2');
-  const showContent3Button = document.getElementById('usage');
+  const showContent3Button = document.getElementById('showContent3');
 
   showContent1Button.addEventListener('click', () => {
     if(!content1.classList.contains('active')) {
@@ -102,6 +170,15 @@
         content1.classList.remove('active');
         content2.classList.remove('active');
       }
+  });
+
+  eventBtn.addEventListener('click', () => {
+    content1.classList.remove('active');
+    content2.classList.remove('active');
+  });
+  regBtn.addEventListener('click', () => {
+    content1.classList.remove('active');
+    content2.classList.remove('active');
   });
 
   showContent2Button.addEventListener('click', () => {
@@ -123,6 +200,17 @@
       }
   });
   }
+
+  if (regSwitchBtn) {
+    regSwitchBtn.addEventListener('click', () => {
+      if(!content3.classList.contains('active')) {
+        content3.classList.add('active');
+      } else {
+        content3.classList.remove('active');
+      }
+  });
+  }
+
 
 </script>
 </html>

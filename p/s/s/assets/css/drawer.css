@@ -20,6 +20,7 @@ body {
     margin: 0 10px;
     text-decoration: none;
     font-family: 'Poppins';
+    
   }
 
   /* Drawer styles */
@@ -47,6 +48,7 @@ body {
 
   .drawer a:hover {
     background-color: #575757;
+    color: #ffffff;
   }
 
   /* Content Shift When Drawer is Open */
