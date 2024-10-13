@@ -13,76 +13,112 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const storage = getStorage(app);
 const listRef = ref(storage, 'events_pictures');
+const listRefmerch = ref(storage, 'merch_pictures');
+const db = getFirestore(initializeApp);
 
-listAll(listRef).then((res) => {
-    const swiperWrapper = document.querySelector('.swiper-wrapper');
-    const images = [];
+const loadingMessage = document.querySelector('.spinner-wrapper');
+loadingMessage.style.display = 'flex';
 
-    const fetchPromises = res.items.map((itemRef) => {
-        return getDownloadURL(itemRef).then((url) => {
-            images.push(url);
+document.addEventListener('DOMContentLoaded', () => {
+
+    const fetchImages = (listRef, swiperWrapperSelector) => {
+        return listAll(listRef).then((res) => {
+            const swiperWrapper = document.querySelector(swiperWrapperSelector);
+            const images = [];
+
+            const fetchPromises = res.items.map((itemRef) => {
+                return getDownloadURL(itemRef).then((url) => {
+                    images.push(url);
+                });
+            });
+
+            return Promise.all(fetchPromises).then(() => {
+                const imgTags = swiperWrapper.getElementsByTagName('img');
+
+                for (let i = 0; i < imgTags.length; i++) {
+                    if (i < images.length) {
+                        imgTags[i].src = images[i];
+                        imgTags[i].classList.add('swiper-slide');
+                    } else {
+                        imgTags[i].remove();
+                    }
+                }
+
+                const allImgTags = swiperWrapper.getElementsByTagName('img');
+                const imageCount = images.length;
+
+                for (let i = 0; i < allImgTags.length; i++) {
+                    if (!allImgTags[i].src && imageCount > 0) {
+                        allImgTags[i].src = images[i % imageCount];
+                    }
+                }
+            });
+        }).catch((error) => {
+            console.error("Error fetching images: ", error);
         });
+    };
+
+    const fetchAllData = async () => {
+        const db = getFirestore(app);
+        const registrationText = document.getElementById('registration-details');
+
+        await Promise.all([
+            fetchImages(listRef, '.swiper-wrapper'),
+            fetchImages(listRefmerch, '.merchandise'),
+            getDoc(doc(db, "registration-details", "registration-text"))
+                .then((docSnap) => {
+                    if (docSnap.exists()) {
+                        const h1 = document.createElement('h1');
+                        h1.innerHTML = docSnap.data().Title || '';
+                        registrationText.appendChild(h1);
+
+                        const br = document.createElement('br');
+                        registrationText.appendChild(br);
+
+                        const p = document.createElement('p');
+                        let text = docSnap.data().Text || '';
+
+                        const urlRegex = /(https?:\/\/[^\s]+)/g;
+                        text = text.replace(urlRegex, (url) => `<a href="${url}" target="_blank">${url}</a>`);
+                        text = text.replace(/\n/g, '<br>');
+                        p.innerHTML = text;
+                        registrationText.appendChild(p);
+                    } else {
+                        console.error("No such document!");
+                    }
+                }).catch((error) => {
+                    console.error("Error fetching document: ", error);
+                })
+        ]);
+    };
+
+    fetchAllData().then(() => {
+        loadingMessage.style.display = 'none';
+    }).catch(() => {
+        loadingMessage.style.display = 'none';
     });
 
-    Promise.all(fetchPromises).then(() => {
-        const imgTags = swiperWrapper.getElementsByTagName('img');
+    async function checkSwitchStatus() {
+        const games = ['valorant', 'mlbb', 'hok'];
+        
+        for (const game of games) {
+            const docRef = doc(db, "reg_switches", game);
+            const docSnap = await getDoc(docRef);
+    
+            if (docSnap.exists()) {
+                const data = docSnap.data();
 
-        for (let i = 0; i < imgTags.length; i++) {
-            if (i < images.length) {
-                imgTags[i].src = images[i];
-                imgTags[i].classList.add('swiper-slide');
+                const option = document.querySelector(`option[value='${game}']`);
+                if (data.switchStatus === "disabled" && option) {
+                    option.remove();
+                }
             } else {
-                imgTags[i].remove();
+                console.log(`No such document: ${game}`);
             }
         }
-
-        const allImgTags = swiperWrapper.getElementsByTagName('img');
-        const imageCount = images.length;
-
-        for (let i = 0; i < allImgTags.length; i++) {
-            if (!allImgTags[i].src && imageCount > 0) {
-                allImgTags[i].src = images[i % imageCount];
-            }
-        }
-
-    });
-}).catch((error) => {
-    console.error("Error fetching images: ", error);
+    }
+    
+    checkSwitchStatus();
 });
-
-const db = getFirestore(app);
-const registrationText = document.getElementById('registration-details');
-
-if (registrationText) {
-    const registrationTextRef = doc(db, "registration-details", "registration-text");
-
-    getDoc(registrationTextRef).then((docSnap) => {
-        if (docSnap.exists()) {
-            const h1 = document.createElement('h1');
-            h1.innerHTML = docSnap.data().Title || '';
-            registrationText.appendChild(h1);
-
-            const br = document.createElement('br');
-            registrationText.appendChild(br);
-
-            const p = document.createElement('p');
-            let text = docSnap.data().Text || '';
-
-            const urlRegex = /(https?:\/\/[^\s]+)/g;
-            
-            text = text.replace(urlRegex, (url) => `<a href="${url}" target="_blank">${url}</a>`);
-            text = text.replace(/\n/g, '<br>');
-            p.innerHTML = text;
-            registrationText.appendChild(p);
-        } else {
-            console.error("No such document!");
-        }
-    }).catch((error) => {
-        console.error("Error fetching document: ", error);
-    });
-} else {
-    console.error("Element .registration-details not found in the DOM");
-}
