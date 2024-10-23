@@ -28,11 +28,11 @@
   
     gtag('config', 'G-G7HLQBNCR2');
   </script>
-  <!-- Google Identity Services for Sign-In -->
+  <!-- Load Google Identity Services for Sign-In -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
   <!-- Load Google API client library -->
   <script src="https://apis.google.com/js/api.js" async defer></script>
-
 
   <!-- Chart.js for rendering the chart -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -251,8 +251,6 @@
 
 
 </script>
-
-
 <script>
   // Step 1: Handle the credential response from GIS
   function handleCredentialResponse(response) {
@@ -268,14 +266,20 @@
           apiKey: 'AIzaSyBXl_8lIBbJwF7ePmlgzfiISUAjGnIf6Jc', // Your API Key
           discoveryDocs: ['https://analyticsdata.googleapis.com/$discovery/rest?version=v1'] // GA4 Data API Discovery Doc
       }).then(function () {
-          getAnalyticsData(); // Fetch the GA4 Analytics data
+          // Load the analyticsdata library
+          return gapi.client.load("analyticsdata", "v1");
+      }).then(function() {
+          console.log("Analytics Data API loaded:", gapi.client.analyticsdata);
+          getAnalyticsData(); // Fetch the GA4 Analytics data after loading the library
+      }).catch(function(error) {
+          console.error("Error loading analytics data library:", error);
       });
   }
 
   // Step 3: Fetch data from GA4 Data API (visits, pageviews, and searches)
   function getAnalyticsData() {
       gapi.client.analyticsdata.properties.runReport({
-          property: 'properties/464501130', // Replace with your GA4 property ID (not Stream ID)
+          property: 'properties/464501130', // Ensure this is correct
           dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
           metrics: [
               { name: 'activeUsers' },     // Users count (visited)
@@ -284,6 +288,8 @@
           ],
           dimensions: [{ name: 'date' }] // Group by date
       }).then(function (response) {
+          // Handle the response
+          console.log(response);
           const rows = response.result.rows;
 
           const labels = rows.map(row => row.dimensionValues[0].value);  // Date labels
@@ -292,6 +298,8 @@
           const searchesData = rows.map(row => row.metricValues[2].value); // Unique searches (if applicable)
 
           renderChart(labels, visitedData, popularityData, searchesData);
+      }).catch(function (error) {
+          console.error('Error fetching analytics data:', error);
       });
   }
 
