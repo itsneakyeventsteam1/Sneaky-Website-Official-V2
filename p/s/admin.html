@@ -278,30 +278,29 @@
 
   // Step 3: Fetch data from GA4 Data API (visits, pageviews, and searches)
   function getAnalyticsData() {
-      gapi.client.analyticsdata.properties.runReport({
-          property: 'properties/464501130', // Ensure this is correct
-          dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
-          metrics: [
-              { name: 'activeUsers' },     // Users count (visited)
-              { name: 'screenPageViews' }, // Pageviews (popularity)
-              { name: 'searchUniques' }    // Unique searches (if applicable)
-          ],
-          dimensions: [{ name: 'date' }] // Group by date
-      }).then(function (response) {
-          // Handle the response
-          console.log(response);
-          const rows = response.result.rows;
+    fetch('https://script.google.com/macros/s/AKfycbwEov6t4Ih31sY8StyRnJtll3EDvtT85iLPJn0AopuCp4nbzevPiRC070PadRuON0AR/exec') // Replace with your Google Apps Script URL
+        .then(response => response.json())
+        .then(data => {
+            const rows = data.rows;
 
-          const labels = rows.map(row => row.dimensionValues[0].value);  // Date labels
-          const visitedData = rows.map(row => row.metricValues[0].value); // Users (Visited)
-          const popularityData = rows.map(row => row.metricValues[1].value); // Pageviews (Popularity)
-          const searchesData = rows.map(row => row.metricValues[2].value); // Unique searches (if applicable)
+            if (!rows || rows.length === 0) {
+                console.error("No data returned from Google Analytics.");
+                return;
+            }
 
-          renderChart(labels, visitedData, popularityData, searchesData);
-      }).catch(function (error) {
-          console.error('Error fetching analytics data:', error);
-      });
-  }
+            const labels = rows.map(row => row.dimensionValues[0].value);  // Dates
+            const visitedData = rows.map(row => row.metricValues[0].value); // Active Users
+            const popularityData = rows.map(row => row.metricValues[1].value); // Pageviews
+            const searchesData = rows.map(row => row.metricValues[2].value); // Unique searches
+
+            renderChart(labels, visitedData, popularityData, searchesData);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
+
 
   // Step 4: Render the chart with Chart.js
   function renderChart(labels, visitedData, popularityData, searchesData) {
