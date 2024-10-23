@@ -199,6 +199,7 @@ textarea {
   }
 
 
+
 .image-grid, .image-grid-merch {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -214,6 +215,10 @@ textarea {
     border: 2px solid transparent;
     transition: border 200ms ease;
     box-shadow: 2px 2px 5px rgba(12, 12, 90, 0.3);
+    transition: all 200ms ease;
+}
+.image-grid img:hover, .image-grid-merch img:hover {
+    scale: 1.05;
 }
 
 .image-grid img.selected, .image-grid-merch img.selected {
@@ -236,11 +241,7 @@ textarea {
 }
 
 #image-manager {
-    width: 90%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     justify-content: center;
     align-items: center;
     text-align: center;
