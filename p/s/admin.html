@@ -232,30 +232,4 @@
 
 
 </script>
-<script>
-  const { GoogleAuth } = require('google-auth-library');
-const { BetaAnalyticsDataClient } = require('@google-analytics/data');
-
-async function fetchAnalyticsData() {
-    const client = new BetaAnalyticsDataClient({
-        auth: new GoogleAuth({
-            keyFile: '/p/s/sneaky-web-analytics-977095a7e448.json', // Path to your JSON key file
-            scopes: 'https://www.googleapis.com/auth/analytics.readonly',
-        }),
-    });
-
-    const propertyId = '464501130'; // Replace with your GA4 Property ID
-
-    const [response] = await client.runReport({
-        property: `properties/${propertyId}`,
-        dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
-        metrics: [{ metricName: 'activeUsers' }, { metricName: 'screenPageViews' }],
-    });
-
-    console.log('Analytics Data:', response);
-}
-
-fetchAnalyticsData().catch(console.error);
-
-</script>
 </html>
