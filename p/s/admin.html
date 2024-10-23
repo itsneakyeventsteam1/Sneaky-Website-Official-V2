@@ -238,8 +238,8 @@
 
   async function initializeGapiClient() {
     await gapi.client.init({
-      apiKey: 'AIzaSyBXl_8lIBbJwF7ePmlgzfiISUAjGnIf6Jc', // Use your actual API key
-      discoveryDocs: ['https://analyticsdata.googleapis.com/$discovery/rest?version=v1'], // Corrected discovery document version
+      apiKey: 'AIzaSyBXl_8lIBbJwF7ePmlgzfiISUAjGnIf6Jc', // Replace with your API key
+      discoveryDocs: ['https://analyticsdata.googleapis.com/$discovery/rest?version=v1'], // Correct discovery document
     });
     gapiInited = true;
     maybeEnableButtons();
@@ -247,7 +247,7 @@
 
   function gisLoaded() {
     tokenClient = google.accounts.oauth2.initTokenClient({
-      client_id: '20694707362-fbn0pagm69eaq492dotkftv1t7ng81d5.apps.googleusercontent.com', // Use your actual client ID
+      client_id: '20694707362-fbn0pagm69eaq492dotkftv1t7ng81d5.apps.googleusercontent.com', // Replace with your Client ID
       scope: 'https://www.googleapis.com/auth/analytics.readonly',
       callback: '',  // Will be filled in later
     });
@@ -281,7 +281,7 @@
   async function getAnalyticsData() {
     try {
       let response = await gapi.client.analyticsdata.properties.runReport({
-        "property": "properties/464591648", // Replace with your actual property ID
+        "property": "properties/464591648", // Replace with your Property ID
         "dimensions": [
           {
             "name": "date"
@@ -300,7 +300,6 @@
         ]
       });
       console.log(response.result);
-      // Handle/display the data on your page, e.g., console.log or inserting into DOM
     } catch (err) {
       console.error("Error running report: ", err);
     }
