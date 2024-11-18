@@ -28,6 +28,7 @@
     const photoofplayer = document.getElementById('photoofplayer').files[0];
     const team = document.getElementById('logo2').files[0];
     const profile = document.getElementById('profile').files[0];
+    const fee = document.getElementById('regfee').files[0];
 
     try {
       const photoPlayer = ref(storage, `${teamName}/photo_of_player/${photoofplayer.name}`);
@@ -42,12 +43,17 @@
       await uploadBytes(profileRef, profile);
       const profileUrl = await getDownloadURL(profileRef);
 
+      const feeRef = ref(storage, `${teamName}/fee/${fee.name}`);
+      await uploadBytes(feeRef, fee);
+      const feeUrl = await getDownloadURL(feeRef);
+
       const teamData = {
         Email: formData.get('vl-Email'),
         TeamName: formData.get('vl-Team Name'),
         photoplayerUrl,
         profileUrl,
         logoUrl,
+        feeUrl,
         Player_1_Name: formData.get('vl-Player1Name'),
         Player_1_RiotId: formData.get('vl-Player1RiotId'),
         Player_2_Name: formData.get('vl-Player2Name'),
@@ -58,7 +64,6 @@
         Player_4_RiotId: formData.get('vl-Player4RiotId'),
         Player_5_Name: formData.get('vl-Player5Name'),
         Player_5_RiotId: formData.get('vl-Player5RiotId'),
-        // Fb_Page_of_School: formData.get('vl-fbpageofschool'),
         fbPageEsportUrl: formData.get('vl-fbPageEsportUrl'),
         Timestamp: new Date(),
       };

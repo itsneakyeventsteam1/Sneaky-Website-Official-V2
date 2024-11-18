@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Headers for Valorant table
       const valorantHeaders = [
         'Select', 'Timestamp', 'Email', 'Team Name', 'Player 1 Name', 'Player 1 Riot ID', 'Player 2 Name', 'Player 2 Riot ID',
-        'Player 3 Name', 'Player 3 Riot ID', 'Player 4 Name', 'Player 4 Riot ID', 'Player 5 Name', 'Player 5 Riot ID', 'Logo Image URL', 'Player Photo URL', 'Profile Photo URL', 'Esports FB Page'
+        'Player 3 Name', 'Player 3 Riot ID', 'Player 4 Name', 'Player 4 Riot ID', 'Player 5 Name', 'Player 5 Riot ID', 'Logo Image URL', 'Player Photo URL', 'Profile Photo URL', 'Registration Fee', 'Esports FB Page'
       ];
 
       downloadTableToExcelWithHeadersAndImages('tablev-body', 'Valorant_Data', valorantHeaders); // tablev-body is the ID of the Valorant table
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const valorantHeaders = [
         'Select', 'Timestamp', 'Email', 'Team Name', 'Squad ID', 'Captain ID', 'Captain FB Link', 'Captain Name', 'Player 1 IGN', 'Player 1 ID',
         'Player 1 FB Link', 'Player 2 IGN', 'Player 2 ID', 'Player 2 FB Link', 'Player 3 IGN', 'Player 3 ID', 'Player 3 FB Link', 
-        'Player 4 IGN', 'Player 4 ID', 'Player 4 FB Link', 'Player 5 IGN', 'Player 5 ID', 'Player 5 FB Link'
+        'Player 4 IGN', 'Player 4 ID', 'Player 4 FB Link', 'Player 5 IGN', 'Player 5 ID', 'Player 5 FB Link', 'Logo', 'Photo of Players', 'Registration Fee'
       ];
 
       downloadTableToExcelWithHeadersAndImages('tableh-body', 'HOK_Data', valorantHeaders); // tablev-body is the ID of the Valorant table
@@ -304,6 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <td><img src="${team.logoUrl}" alt="Logo Image" width="100"></td>
               <td><img src="${team.photoplayerUrl}" alt="Player Photo" width="100"></td>
               <td><img src="${team.profileUrl}" alt="Player Photo" width="100"></td>
+              <td><img src="${team.feeUrl}" alt="Registration Fee" width="100"></td>
               <td><a href="${team.fbPageEsportUrl}">${team.fbPageEsportUrl}</a></td>
               
             `;
@@ -380,6 +381,9 @@ document.addEventListener('DOMContentLoaded', () => {
               <td>${team.Player_5_IGN}</td>
               <td>${team.Player_5_ID}</td>
               <td>${team.Player_5_FBLink}</td>
+              <td>${team.logoUrl}</td>
+              <td>${team.photoPlayerUrl}</td>
+              <td>${team.feeUrl}</td>
               
               `;
               tableBody.appendChild(row);
